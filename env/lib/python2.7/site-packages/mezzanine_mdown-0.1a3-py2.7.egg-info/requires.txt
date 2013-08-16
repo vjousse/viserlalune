@@ -1,0 +1,3 @@
+setuptools
+mezzanine>=0.11.3
+markdown
