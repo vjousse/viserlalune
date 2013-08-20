@@ -1,0 +1,78 @@
+/* ----------------------------------------------------------------
+    
+    This CSS File contains the List of all the Custom Fonts
+    used in the Theme. Use will need to change the following
+    in order to use the new font.
+    
+    font-family: 'Your New Font Name';
+    font-weight: {valid font weights}; eg. bold, normal, 600 etc.
+    
+-----------------------------------------------------------------*/
+
+
+/* ----------------------------------------------------------------
+    Primary Font Used
+-----------------------------------------------------------------*/
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+#logo,
+#primary-menu li a,
+#primary-menu li a span,
+.slide-caption2,
+#lp-contacts li,
+#portfolio-filter li a,
+.entry_meta li a,
+.comment-content .comment-author,
+.sitemap,
+.promo-desc > span,
+.promo-action a,
+.error404,
+.tab_widget ul.tabs li a,
+.toggle .togglet,
+.toggle .toggleta,
+.team-image span,
+.team-skills li,
+.skills li span,
+.simple-button,
+.pricing-price .price-tenure,
+.acctitle,
+.acctitlec,
+.testimonial-item .testi-author,
+.widget_nav_menu li,
+.widget_links li,
+.widget_meta li,
+.widget_archive li,
+.widget_recent_comments li,
+.widget_recent_entries li,
+.widget_categories li,
+.widget_pages li { font-family: "Open Sans"; }
+
+
+/* ----------------------------------------------------------------
+    Secondary Font Used
+-----------------------------------------------------------------*/
+
+
+blockquote,
+.entry_content ul,
+.entry_content ol,
+.slide-caption,
+.rs-caption,
+.nivo-caption,
+.countdown_amount,
+.wp-caption,
+.sitemap ul,
+.well.callout p,
+.quote,
+.pricing-title h4 span,
+.pricing-inner .pricing-price,
+.testimonial-item .testi-content,
+.testimonial-item .testi-author span { font-family: "Droid Serif"; }
+
+

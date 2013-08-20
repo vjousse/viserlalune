@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}">
+{% load pages_tags mezzanine_tags i18n future staticfiles %}
+<head>
+
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+    <meta name="description" content="{% block meta_description %}{% endblock %}">
+    <meta name="author" content="Vincent Jousse" />
+
+    <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
+    <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
+
+    {% ifinstalled mezzanine.blog %}
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
+    {% endifinstalled %}
+    <link href="http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic|Open+Sans:400,300,600,700" rel="stylesheet" type="text/css" />
+
+    {% compress css %}
+    <link rel="stylesheet" href="{% static "style.css" %}" type="text/css" />
+    <link rel="stylesheet" media="only screen and (-webkit-min-device-pixel-ratio: 2)" type="text/css" href="{% static "css/retina.css" %}" />
+    <link rel="stylesheet" href="{% static "css/tipsy.css" %}" type="text/css" />
+    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}" type="text/css" />
+    <link rel="stylesheet" href="{% static "css/font-awesome.css" %}" type="text/css" />
+    <link rel="stylesheet" href="{% static "css/prettyPhoto.css" %}" type="text/css" />
+    <link rel="stylesheet" href="{% static "css/rs/css/rs-settings.css" %}" type="text/css" />
+
+    {% block extra_css %}{% endblock %}
+    {% endcompress %}
+
+    {% compress js %}
+    <script src="{% static "js/jquery.js" %}"></script>
+    <script src="{% static "js/plugins.js" %}"></script>
+    {% block extra_js %}{% endblock %}
+    {% endcompress %}
+
+    {% block extra_head %}{% endblock %}
+
+</head>
+<body class="stretched" id="{% block body_id %}body{% endblock %}">
+    <div id="wrapper" class="clearfix">
+
+        <!-- ============================================
+            Header
+        ============================================= -->
+        <div id="header">
+
+
+            <div class="container clearfix">
+
+
+                <!-- ============================================
+                    Logo
+                ============================================= -->
+                <div id="logo">
+
+                    <a href="/" class="standard-logo"><img src="{% static 'images/logo-etre-soi-meme.png' %}" alt="Le plaisir d'être soi-même" title="Le plaisir d'être soi-même" /></a>
+
+                </div>
+
+
+                <!-- ============================================
+                    Menu
+                ============================================= -->
+                <div id="primary-menu">
+
+                {% page_menu "pages/menus/dropdown.html" %}
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+<div class="container">
+
+{% nevercache %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }}" data-alert="alert">
+    <a class="close" href="#" onclick="$(this).parent().fadeOut('fast'); return false;">×</a>{{ message }}
+</div>
+{% endfor %}
+{% endnevercache %}
+
+
+<h1>{% block title %}{% endblock %}</h1>
+
+<ul class="breadcrumb">
+{% spaceless %}
+{% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
+{% endspaceless %}
+</ul>
+
+</div>
+
+<div class="container">
+<div class="row">
+
+<div class="span2 left">
+    {% block left_panel %}
+    <div class="panel tree">{% page_menu "pages/menus/tree.html" %}</div>
+    {% endblock %}
+</div>
+
+<div class="span7 middle">
+    {% block main %}{% endblock %}
+</div>
+
+<div class="span3 right">
+    {% nevercache %}
+    {% include "includes/user_panel.html" %}
+    {% endnevercache %}
+    <div class="panel">
+    {% block right_panel %}
+    {% ifinstalled mezzanine.twitter %}
+    {% include "twitter/tweets.html" %}
+    {% endifinstalled %}
+    {% endblock %}
+    </div>
+</div>
+
+</div>
+</div>
+
+
+    </div>
+    <!-- END WRAPPER -->
+
+    <div id="gotoTop" class="icon-angle-up"></div>
+
+
+
+    {% compress js %}
+    <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+    {% endcompress %}
+    
+    {% include "includes/footer_scripts.html" %}
+
+</body>
+</html>
