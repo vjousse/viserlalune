@@ -93,8 +93,8 @@
 
                                     <span><strong>Partagez cet article :</strong></span>
 
-                                    <a href="http://www.facebook.com/sharer.php?u={{ blog_post.get_absolute_url }}" class="ntip" title="Partager sur Facebook"><img src="{% static 'images/icons/social/post/facebook.png' %}" alt="Facebook" /></a>
-                                    <a href="http://twitter.com/home/?status={{ blog_post.title }} - {{ blog_post.get_absolute_url }} via @vjousse " class="ntip" title="Tweet on Twitter"><img src="{% static 'images/icons/social/post/twitter.png' %}" alt="Twitter" /></a>
+                                    <a href="http://facebook.com/sharer.php?u={{ request.build_absolute_uri }}&amp;t={{ blog_post.title|urlencode }}" class="ntip" title="Partager sur Facebook"><img src="{% static 'images/icons/social/post/facebook.png' %}" alt="Facebook" /></a>
+                                    <a href="http://twitter.com/home/?status={{ blog_post.title }} - {{ blog_post.short_url|urlencode }} via @vjousse " class="ntip" title="Tweet on Twitter"><img src="{% static 'images/icons/social/post/twitter.png' %}" alt="Twitter" /></a>
                                     <a href="https://plus.google.com/share?url={{ blog_post.get_absolute_url }}" onclick="javascript:window.open(this.href,
                                         '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false; " class="ntip" title="Partager sur Google Plus"><img src="{% static 'images/icons/social/post/googleplus.png' %}" alt="Google Plus" /></a>
                                     <a href="#" onclick="popUp=window.open('https://www.stumbleupon.com/submit?url={{ blog_post.get_absolute_url }}', 'popupwindow', 'scrollbars=yes,width=800,height=400');popUp.focus();return false" class="ntip" title="Partager sur StumbleUpon"><img src="{% static 'images/icons/social/post/stumbleupon.png' %}" alt="StumbleUpon" /></a>
@@ -107,17 +107,21 @@
                         <div class="clear"></div>
 
 
-                        <?php if(related_posts_exist()): ?>
+                        {% if blog_post.related_posts.all %}
+
                         <div style="position: relative;">
 
                             <h4><span>Articles</span> en rapport</h4>
-                            <?php related_posts() ?>
+                            <ul class="unstyled">
+                            {% for post in blog_post.related_posts.all %}
+                                <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+                            {% endfor %}
+                            </ul>
                         </div>
                         <div class="clear"></div>
 
                         <div class="double-line"></div>
-                        <?php endif; ?>
-
+                        {% endif %}
 
 
                         <div id="landing-subscribe" style="padding-top:30px;">
@@ -143,14 +147,25 @@
                         <div class="clear"></div>
 
 
-                        <ul class="pager nobottommargin">
-                            <li class="previous">
-                                <?php previous_post_link('%link', '&larr; %title'); ?>
-                            </li>
-                            <li class="next">
-                                <?php next_post_link('%link', '%title &rarr;'); ?>
-                            </li>
-                        </ul>
+
+                    {% block blog_post_previous_next %}
+                    <ul class="pager nobottommargin">
+                    {% with blog_post.get_previous_by_publish_date as previous %}
+                    {% if previous %}
+                    <li class="previous">
+                        <a href="{{ previous.get_absolute_url }}">&larr; {{ previous }}</a>
+                    </li>
+                    {% endif %}
+                    {% endwith %}
+                    {% with blog_post.get_next_by_publish_date as next %}
+                    {% if next %}
+                    <li class="next">
+                        <a href="{{ next.get_absolute_url }}">{{ next }} &rarr;</a>
+                    </li>
+                    {% endif %}
+                    {% endwith %}
+                    </ul>
+                    {% endblock %}
 
 
                     </div>
@@ -176,82 +191,10 @@
         </div>
 
 
-{% block blog_post_detail_postedby %}
-{% editable blog_post.publish_date %}
-<h6>
-    {% trans "Posted by" %}:
-    {% with blog_post.user as author %}
-    <a href="{% url "blog_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
-    {% endwith %}
-    {% blocktrans with sometime=blog_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %}
-</h6>
-{% endeditable %}
-{% endblock %}
-{% block blog_post_detail_commentlink %}
-<p>
-    {% if blog_post.allow_comments %}
-        (<a href="#comments">{% spaceless %}
-            {% blocktrans count comments_count=blog_post.comments_count %}{{ comments_count }} comment{% plural %}{{ comments_count }} comments{% endblocktrans %}
-            {% endspaceless %}</a>)
-    {% endif %}
-</p>
-{% endblock %}
-
-
-
-{% block blog_post_detail_keywords %}
-{% keywords_for blog_post as tags %}
-{% if tags %}
-{% spaceless %}
-<ul class="unstyled tags">
-    <li>{% trans "Tags" %}:</li>
-    {% for tag in tags %}
-    <li><a href="{% url "blog_post_list_tag" tag.slug %}">{{ tag }}</a></li>
-    {% endfor %}
-</ul>
-{% endspaceless %}
-{% endif %}
-{% endblock %}
 
 {% rating_for blog_post %}
 
-{% block blog_post_detail_sharebuttons %}
-{% set_short_url_for blog_post %}
-<a class="btn small primary share-twitter" target="_blank" href="http://twitter.com/home?status={{ blog_post.short_url|urlencode }}%20{{ blog_post.title|urlencode }}">{% trans "Share on Twitter" %}</a>
-<a class="btn small primary share-facebook" target="_blank" href="http://facebook.com/sharer.php?u={{ request.build_absolute_uri }}&amp;t={{ blog_post.title|urlencode }}">{% trans "Share on Facebook" %}</a>
-{% endblock %}
 
-{% block blog_post_previous_next %}
-<ul class="pager">
-{% with blog_post.get_previous_by_publish_date as previous %}
-{% if previous %}
-<li class="previous">
-    <a href="{{ previous.get_absolute_url }}">&larr; {{ previous }}</a>
-</li>
-{% endif %}
-{% endwith %}
-{% with blog_post.get_next_by_publish_date as next %}
-{% if next %}
-<li class="next">
-    <a href="{{ next.get_absolute_url }}">{{ next }} &rarr;</a>
-</li>
-{% endif %}
-{% endwith %}
-</ul>
-{% endblock %}
-
-{% block blog_post_detail_related_posts %}
-{% if blog_post.related_posts.all %}
-<div id="related-posts">
-<h3>{% trans 'Related posts' %}</h3>
-<ul class="unstyled">
-{% for post in blog_post.related_posts.all %}
-     <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
-{% endfor %}
-</ul>
-</div>
-{% endif %}
-{% endblock %}
 
 {% block blog_post_detail_comments %}
 {% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
