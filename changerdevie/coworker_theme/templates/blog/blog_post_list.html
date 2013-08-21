@@ -92,10 +92,10 @@
                             {% with month=blog_post.publish_date|date:"F" year=blog_post.publish_date|date:"Y" %}
 
                         {% ifchanged %}
-                        <h2>{{ month|capfirst }} {{ year }}</h2>
                         {% if not forloop.first %}
                         </ul>
                         {% endif %}
+                        <h2>{{ month|capfirst }} {{ year }}</h2>
                         <ul class="sitemap">
                         {% endifchanged %}
 
