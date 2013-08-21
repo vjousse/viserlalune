@@ -88,10 +88,16 @@
                     ============================================= -->
 
                     <div class="col_full entry_content">
-
-                        <ul class="sitemap">
-
                         {% for blog_post in blog_posts.object_list %}
+                            {% with month=blog_post.publish_date|date:"F" year=blog_post.publish_date|date:"Y" %}
+
+                        {% ifchanged %}
+                        <h2>{{ month|capfirst }} {{ year }}</h2>
+                        {% if not forloop.first %}
+                        </ul>
+                        {% endif %}
+                        <ul class="sitemap">
+                        {% endifchanged %}
 
 
                             <li>
@@ -110,6 +116,7 @@
                                     </a>
                                 </span>
                             </li>
+                            {% endwith %}
                         {% endfor %}
 
                         </ul>
