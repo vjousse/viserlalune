@@ -466,16 +466,15 @@ span.page-divider span {
     clear: left;
     color: #444;
     list-style-type: disc;
-    font-size: 13px;
-    font-family: 'Droid Serif', serif;
+    font-size: 17px;
+    padding-left: 20px;
 }
 
 .entry_content ol {
     clear: left;
     color: #444;
     list-style-type: decimal;
-    font-size: 13px;
-    font-family: 'Droid Serif', serif;
+    font-size: 17px;
 }
 
 label {
@@ -890,6 +889,7 @@ form small {
 #primary-menu > div > ul > li.current-menu-parent,
 #primary-menu > div > ul > li.current-menu-item,
 .sticky-menu-wrap > ul > li:hover,
+.sticky-menu-wrap li:hover,
 .sticky-menu-wrap ul li.current,
 .sticky-menu-wrap > ul > li.current-menu-ancestor,
 .sticky-menu-wrap > ul > li.current-menu-parent,
@@ -907,6 +907,7 @@ form small {
 #primary-menu > div > ul > li.current-menu-item > a,
 .sticky-menu-wrap ul li.current a,
 .sticky-menu-wrap > ul > li:hover a,
+.sticky-menu-wrap ul li:hover a,
 .sticky-menu-wrap > ul > li.current-menu-ancestor > a,
 .sticky-menu-wrap > ul > li.current-menu-parent > a,
 .sticky-menu-wrap > ul > li.current-menu-item > a {
@@ -2732,8 +2733,8 @@ div.post-icon i {
     padding: 0;
     color: #444;
     font-weight: 600;
-    font-size: 20px;
-    line-height: 26px;
+    font-size: 26px;
+    line-height: 32px;
 }
 
 .postcontent .small-posts .entry_title h2 {
@@ -2750,7 +2751,7 @@ div.post-icon i {
     margin: 0 -7px -3px 0;
 }
 
-.post-single .entry_meta { margin-bottom: 12px; }
+.post-single .entry_meta { margin-bottom: 30px; }
 
 .entry_meta li {
     margin: 0 7px 3px 0;
@@ -2790,10 +2791,16 @@ div.post-icon i {
 
 .entry_content {
     position: relative;
-    font-size: 13px;
+    font-size: 17px;
+    line-height: 28px;
     margin-bottom: -20px;
 }
 
+.entry_content h2 {
+    font-size: 24px;
+    line-height: 30px;
+    padding-top: 20px;
+}
 
 .entry_share {
     position: relative;
@@ -3232,6 +3239,10 @@ p.wp-caption-text {
     font-size: 14px;
     font-weight: bold;
     margin-bottom: 0;
+}
+
+#content .sitemap {
+    list-style-type: square;
 }
 
 .sitemap ul {
