@@ -1,4 +1,4 @@
-{% extends "blog/blog_post_list.html" %}
+{% extends "base.html" %}
 {% load mezzanine_tags comment_tags keyword_tags rating_tags i18n future disqus_tags %}
 
 {% block meta_title %}{{ blog_post.meta_title }}{% endblock %}
@@ -22,6 +22,160 @@
 {% endblock %}
 
 {% block main %}
+
+
+        <div id="content">
+
+
+            <!-- ============================================
+              Page Title
+            ============================================= -->
+            <div id="page-title">
+
+
+                <div class="container clearfix">
+
+                    <h1>Le Blog <span>/ {{ blog_post.title }}</span></h1>
+
+                </div>
+
+
+            </div>
+            <div class="content-wrap">
+
+                <div class="container clearfix">
+
+
+                    <!-- ============================================
+                        Page Content Start
+                    ============================================= -->
+                    <div class="postcontent nobottommargin clearfix">
+
+
+                        <div class="entry post-single clearfix">
+
+                            <div class="entry_title"><h2>{{ blog_post.title }}</h2></div>
+
+                            <ul class="entry_meta clearfix">
+
+                                <li><i class="icon-calendar"></i>{{ blog_post.publish_date|date:"j F Y" }}</li>
+                                <li><span>/</span><i class="icon-user"></i>{{ blog_post.user.get_full_name|default:blog_post.user.username }}</li>
+                                <li><span>/</span><i class="icon-copy"></i>
+                                
+                                {% with blog_post.categories.all as categories %}
+                                {% if categories %}
+                                {% for category in categories %}
+                                <a href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                                {% endif %}
+                                {% endwith %}
+                                
+                                <li><span>/</span>
+
+                                    <a href="{{ blog_post.get_absolute_url }}#comments">
+                                        <i class="icon-comments-alt"></i>
+                                        
+                                        {% if blog_post.comments_count == 0 %}
+                                            Commenter
+                                        {% else %}
+                                            {{ blog_post.comments_count }} commentaire{{ blog_post.comments_count|pluralize }}
+                                        {% endif %}
+                                    </a>
+                                </li>
+                            </ul>
+
+
+                            <div class="entry_content">
+
+                                <?php the_content(); ?>
+
+                                <div class="entry_share clearfix">
+
+                                    <span><strong>Partagez cet article :</strong></span>
+
+                                    <a href="http://www.facebook.com/sharer.php?u=<?php the_permalink();?> - <?php echo wp_get_shortlink();?> " class="ntip" title="Partager sur Facebook"><img src="<?php echo get_template_directory_uri(); ?>/images/icons/social/post/facebook.png" alt="Facebook" /></a>
+                                    <a href="http://twitter.com/home/?status=<?php the_title();?> - <?php echo the_permalink();?> via @vjousse " class="ntip" title="Tweet on Twitter"><img src="<?php echo get_template_directory_uri(); ?>/images/icons/social/post/twitter.png" alt="Twitter" /></a>
+                                    <a href="#" class="ntip" title="Partager sur Pinterest"><img src="<?php echo get_template_directory_uri(); ?>/images/icons/social/post/pinterest.png" alt="Pinterest" /></a>
+                                    <a href="https://plus.google.com/share?url=<?php the_permalink(); ?>" onclick="javascript:window.open(this.href,
+                            '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false; " class="ntip" title="Partager sur Google Plus"><img src="<?php echo get_template_directory_uri(); ?>/images/icons/social/post/googleplus.png" alt="Google Plus" /></a>
+                                    <a href="#" onclick="popUp=window.open('https://www.stumbleupon.com/submit?url=<?php the_permalink(); ?>', 'popupwindow', 'scrollbars=yes,width=800,height=400');popUp.focus();return false" class="ntip" title="Partager sur StumbleUpon"><img src="<?php echo get_template_directory_uri(); ?>/images/icons/social/post/stumbleupon.png" alt="StumbleUpon" /></a>
+                                    <a href="http://reddit.com/submit?url=<?php echo get_permalink() ?>&title=<?php the_title(); ?>" class="ntip" title="Partager sur Reddit"><img src="<?php echo get_template_directory_uri(); ?>/images/icons/social/post/reddit.png" alt="Reddit" /></a>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+
+
+                        <?php if(related_posts_exist()): ?>
+                        <div style="position: relative;">
+
+                            <h4><span>Articles</span> en rapport</h4>
+                            <?php related_posts() ?>
+                        </div>
+                        <div class="clear"></div>
+
+                        <div class="double-line"></div>
+                        <?php endif; ?>
+
+
+
+                        <div id="landing-subscribe" style="padding-top:30px;">
+                            <h3 class="center">Inscrivez-vous et <span>changez les choses</span> dès maintenant</h3>
+                            <p class="landing-desc center">
+                                Vous recevrez <strong>les mises à jour du blog</strong>, des <strong>recommandations de lecture</strong> et <strong>mes livres numériques</strong> directement dans votre boîte mail&nbsp;!
+                            </p>
+                            <?php
+                            $widgetNL = new WYSIJA_NL_Widget(true);
+                            echo $widgetNL->widget(array('form' => 1, 'form_type' => 'php'));
+                            ?>
+
+                            <p class="center">Et je suis comme vous, je déteste le SPAM.</p>
+                        </div>
+
+                        <?php
+                        // If comments are open or we have at least one comment, load up the comment template
+                        if ( comments_open()): ?>
+                            <?php comments_template(); ?>
+                        <?php endif; ?>
+
+                        <div class="double-line"></div>
+                        <div class="clear"></div>
+
+
+                        <ul class="pager nobottommargin">
+                            <li class="previous">
+                                <?php previous_post_link('%link', '&larr; %title'); ?>
+                            </li>
+                            <li class="next">
+                                <?php next_post_link('%link', '%title &rarr;'); ?>
+                            </li>
+                        </ul>
+
+
+                    </div>
+                    <!-- ============================================
+                        Page Content END
+                    ============================================= -->
+
+                    <!-- ============================================
+                        Sidebar Widgets
+                    ============================================= -->
+                    <div class="sidebar col_last nobottommargin clearfix">
+
+
+                        <div class="sidebar-widgets-wrap clearfix">
+                        <?php get_sidebar(); ?>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
 
 {% block blog_post_detail_postedby %}
 {% editable blog_post.publish_date %}
