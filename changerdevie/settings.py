@@ -100,14 +100,14 @@ MANAGERS = ADMINS
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = None
+TIME_ZONE = "Europe/Paris"
 
 # If you set this to True, Django will use timezone-aware datetimes.
 USE_TZ = True
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = "en"
+LANGUAGE_CODE = "fr_FR"
 
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
 # are displayed for error pages. Should always be set to ``False`` in
@@ -121,7 +121,8 @@ SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
-USE_I18N = False
+USE_I18N = True
+USE_L10N = True
 
 # Make these unique, and don't share it with anybody.
 SECRET_KEY = "2cb06ff2-12c5-44c8-80c8-f0c95435aa866bbe8749-58bb-4a0d-81bc-cab4c2c2709f4948d3f4-45fa-404a-9cb3-3d2156da9876"
