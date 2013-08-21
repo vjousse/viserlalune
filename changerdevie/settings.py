@@ -81,6 +81,8 @@ USE_SOUTH = True
 RICHTEXT_WIDGET_CLASS = "mdown.forms.WmdWidget"
 RICHTEXT_FILTER = "mdown.filters.codehilite"
 
+BLOG_POST_PER_PAGE = 10000
+
 ########################
 # MAIN DJANGO SETTINGS #
 ########################
