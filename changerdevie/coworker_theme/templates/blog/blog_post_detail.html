@@ -69,7 +69,8 @@
                                 {% endfor %}
                                 {% endif %}
                                 {% endwith %}
-                                
+
+                                {% if blog_post.allow_comments %}
                                 <li><span>/</span>
 
                                     <a href="{{ blog_post.get_absolute_url }}#comments">
@@ -82,6 +83,7 @@
                                         {% endif %}
                                     </a>
                                 </li>
+                                {% endif %}
                             </ul>
 
 
@@ -129,19 +131,13 @@
                             <p class="landing-desc center">
                                 Vous recevrez <strong>les mises à jour du blog</strong>, des <strong>recommandations de lecture</strong> et <strong>mes livres numériques</strong> directement dans votre boîte mail&nbsp;!
                             </p>
-                            <?php
-                            $widgetNL = new WYSIJA_NL_Widget(true);
-                            echo $widgetNL->widget(array('form' => 1, 'form_type' => 'php'));
-                            ?>
 
                             <p class="center">Et je suis comme vous, je déteste le SPAM.</p>
                         </div>
 
-                        <?php
-                        // If comments are open or we have at least one comment, load up the comment template
-                        if ( comments_open()): ?>
-                            <?php comments_template(); ?>
-                        <?php endif; ?>
+                        {% block blog_post_detail_comments %}
+                        {% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
+                        {% endblock %}
 
                         <div class="double-line"></div>
                         <div class="clear"></div>
@@ -191,13 +187,5 @@
         </div>
 
 
-
-{% rating_for blog_post %}
-
-
-
-{% block blog_post_detail_comments %}
-{% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
-{% endblock %}
 
 {% endblock %}

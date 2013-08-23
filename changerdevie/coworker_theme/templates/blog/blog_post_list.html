@@ -103,8 +103,10 @@
                             <li>
                                 <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
                                 <span>
-                                    <i class="icon-calendar"></i>{{ blog_post.publish_date|date:"j F Y" }} ·
-
+                                    <i class="icon-calendar"></i>{{ blog_post.publish_date|date:"j F Y" }} 
+                                    
+                                    {% if blog_post.allow_comments %}
+                                    ·
                                     <a href="{{ blog_post.get_absolute_url }}#comments">
                                         <i class="icon-comments-alt"></i>
                                         
@@ -114,6 +116,8 @@
                                             {{ blog_post.comments_count }} commentaire{{ blog_post.comments_count|pluralize }}
                                         {% endif %}
                                     </a>
+                                    {% endif %}
+
                                     {% with blog_post.categories.all as categories %}
                                     {% if categories %}
                                     ·
