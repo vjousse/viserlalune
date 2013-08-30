@@ -30,13 +30,10 @@
                 {% else %}
                     {{ comment.user_name }}
                 {% endif %}
-                    <span><a title="Lien vers ce commentaire" href="{{ request.path }}#comment-{{ comment.id }}">{% blocktrans with sometime=comment.submit_date|timesince %}{{ sometime }} ago{% endblocktrans %}</a> · <a href="#reply-{{ comment.id }}" class="reply">{% trans "Reply" %}</a></span>
+                    <span><a title="Lien vers ce commentaire" href="{{ request.path }}#comment-{{ comment.id }}">{% blocktrans with sometime=comment.submit_date|timesince %}{{ sometime }} ago{% endblocktrans %}</a> · <a href="#reply-{{ comment.id }}" class="reply" data-id="{{comment.id}}">{% trans "Reply" %}</a></span>
                 </div>
 
             <p>{{ comment.comment|comment_filter }}</p>
-
-            </div>
-
 
             <form class="reply-form" method="post" id="reply-{{ comment.id }}"
                 action="{{ comment_url }}#reply-{{ comment.id }}"
@@ -50,7 +47,11 @@
                 <input id="submit-button" class="btn" type="submit" value="{% trans "Reply" %}">
             </form>
 
+            </div>
+
         </div>
+
+
 
         {% else %}
 
