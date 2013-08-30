@@ -83,6 +83,8 @@ RICHTEXT_FILTER = "mdown.filters.codehilite"
 
 BLOG_POST_PER_PAGE = 10000
 
+COMMENTS_USE_RATINGS = False
+
 ########################
 # MAIN DJANGO SETTINGS #
 ########################
