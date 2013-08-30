@@ -1,9 +1,14 @@
 {% load i18n mezzanine_tags comment_tags %}
-<div id="comments">
-<h3>{% trans "Comments" %}</h3>
-{% if settings.COMMENTS_DISQUS_SHORTNAME %}
-{% include "generic/includes/disqus_comments.html" %}
-{% else %}
+
+
+
+<div id="comments" class="clearfix">
+
+{% if object_for_comments.comments_count > 0 %}
+    <h3 id="comments-title"><span>{{ object_for_comments.comments_count }}</span> Commentaire{{ object_for_comments.comments_count|pluralize }}</h3>
+    {% comment_thread object_for_comments %}
+{% endif %}
+
 <script>
 $(function() {
     $('.reply').click(function() {
@@ -13,7 +18,6 @@ $(function() {
 });
 </script>
 <style>.input_id_honeypot {display:none !important;}</style>
-{% comment_thread object_for_comments %}
 <h3>{% trans "New Comment" %}</h3>
 <form method="post" id="comment" action="{{ comment_url }}#comment">
     {% if not request.POST.replied_to %}
@@ -22,8 +26,7 @@ $(function() {
     {% fields_for unposted_comment_form %}
     {% endif %}
     <div class="form-actions">
-        <input class="btn btn-primary btn-large" type="submit" value="{% trans "Comment" %}">
+        <input class="btn" type="submit" value="Soumettre le commentaire">
     </div>
 </form>
-{% endif %}
 </div>

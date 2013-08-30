@@ -33,7 +33,7 @@
             {% fields_for unposted_comment_form %}
             {% endif %}
             <input type="hidden" name="replied_to" value="{{ comment.id }}">
-            <input class="btn btn-primary btn-large" type="submit" value="{% trans "Reply" %}">
+            <input id="submit-button" class="btn" type="submit" value="{% trans "Reply" %}">
         </form>
 
         {% else %}
