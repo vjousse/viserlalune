@@ -92,6 +92,7 @@ textarea {
 }
 
 input[type="text"],
+input[type="email"],
 input[type="password"],
 textarea {
     -webkit-appearance: none;
@@ -489,6 +490,7 @@ label {
 select { min-height: inherit !important; }
 
 input[type="text"],
+input[type="email"],
 input[type="password"],
 select,
 textarea {
@@ -504,6 +506,7 @@ textarea {
 }
 
 #footer.footer-dark input[type="text"],
+#footer.footer-dark input[type="email"],
 #footer.footer-dark input[type="password"],
 #footer.footer-dark select,
 #footer.footer-dark textarea {
@@ -514,6 +517,7 @@ textarea {
 }
 
 input[type="text"],
+input[type="email"],
 input[type="password"] { width: 45%; }
 
 input[type="checkbox"],
@@ -532,19 +536,23 @@ textarea {
 textarea.short-textarea { height: 80px; }
 
 input[type="text"]:active,
+input[type="email"]:active,
 input[type="password"]:active,
 textarea:active,
 select:active,
 input[type="text"]:focus,
+input[type="email"]:focus,
 input[type="password"]:focus,
 textarea:focus,
 select:focus { border-color: #CCC; }
 
 #footer.footer-dark input[type="text"]:active,
+#footer.footer-dark input[type="email"]:active,
 #footer.footer-dark input[type="password"]:active,
 #footer.footer-dark textarea:active,
 #footer.footer-dark select:active,
 #footer.footer-dark input[type="text"]:focus,
+#footer.footer-dark input[type="email"]:focus,
 #footer.footer-dark input[type="password"]:focus,
 #footer.footer-dark textarea:focus,
 #footer.footer-dark select:focus { border-color: #666; }
@@ -1928,7 +1936,7 @@ ul.landing-features li:hover { font-weight: bold; }
 .lp-subscribe .lp-subscribe-input {
     display: block;
     float: left;
-    width: 420px;
+    width: 210px;
 }
 
 .lp-subscribe .lp-subscribe-submit {
@@ -1936,9 +1944,9 @@ ul.landing-features li:hover { font-weight: bold; }
     float: left;
 }
 
-.lp-subscribe input[type="text"] {
+.lp-subscribe input[type="text"], .lp-subscribe input[type="email"] {
     display: block;
-    width: 360px;
+    width: 150px;
     padding: 13px 12px 11px 46px;
     font-size: 16px;
     color: #999;
@@ -1961,9 +1969,11 @@ ul.landing-features li:hover { font-weight: bold; }
     background: #57B3DF;
     text-align: center;
     text-transform: uppercase;
-    margin: 0 !important;
+    margin-top: 10px;
+    margin-left: 30px;
     -webkit-border-radius: 0;
     border-radius: 0;
+    width: 150px;
 }
 
 .lp-subscribe input[type="submit"]:hover { background-color: #444; }
