@@ -6,7 +6,7 @@
 
     {% for page in page_branch %}
 
-    <li{% if page.is_current_or_ascendant %} class="current"{% endif %}><a href="{{ page.get_absolute_url }}"><div>{{ page.title }}</div></a>
+    <li{% if page.is_current_or_ascendant %} class="current"{% endif %}><a href="{{ page.get_absolute_url }}"><div>{{ page.title }}</div><span class="sub">{% if page.short_description %}{{ page.short_description }}{% endif %}</span></a>
         {% page_menu "pages/menus/subdropdown.html" page %}
     </li>
 
