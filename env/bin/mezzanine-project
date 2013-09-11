@@ -1,4 +1,4 @@
-#!/home/vjousse/usr/src/python/changerdevie/env/bin/python2
+#!/home/vjousse/usr/src/python/vjousse/env/bin/python2
 # EASY-INSTALL-ENTRY-SCRIPT: 'Mezzanine==1.4.10','console_scripts','mezzanine-project'
 __requires__ = 'Mezzanine==1.4.10'
 import sys

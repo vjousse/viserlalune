@@ -1,4 +1,4 @@
-#!/home/vjousse/usr/src/python/changerdevie/env/bin/python2
+#!/home/vjousse/usr/src/python/vjousse/env/bin/python2
 from django.core import management
 
 if __name__ == "__main__":

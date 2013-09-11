@@ -1,4 +1,4 @@
-#!/home/vjousse/usr/src/python/changerdevie/env/bin/python2
+#!/home/vjousse/usr/src/python/vjousse/env/bin/python2
 #
 # The Python Imaging Library.
 # $Id$

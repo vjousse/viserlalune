@@ -32,7 +32,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/vjousse/usr/src/python/changerdevie/env"
+set -gx VIRTUAL_ENV "/home/vjousse/usr/src/python/vjousse/env"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

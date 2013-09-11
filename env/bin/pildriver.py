@@ -1,4 +1,4 @@
-#!/home/vjousse/usr/src/python/changerdevie/env/bin/python2
+#!/home/vjousse/usr/src/python/vjousse/env/bin/python2
 """PILdriver, an image-processing calculator using PIL.
 
 An instance of class PILDriver is essentially a software stack machine
