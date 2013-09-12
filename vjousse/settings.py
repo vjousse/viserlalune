@@ -232,7 +232,7 @@ INSTALLED_APPS = (
     "django.contrib.sites",
     "django.contrib.sitemaps",
     "django.contrib.staticfiles",
-    "vjousse.coworker_theme",
+    "vjousse.readable_theme",
     "mezzanine.boot",
     "mezzanine.conf",
     "mezzanine.core",

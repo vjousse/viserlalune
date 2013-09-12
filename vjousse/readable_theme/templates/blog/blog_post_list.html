@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% load i18n future mezzanine_tags blog_tags keyword_tags disqus_tags %}
+
+{% block meta_title %}{% if page %}{{ page.richtextpage.meta_title }}{% else %}{% trans "Blog" %}{% endif %}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+{% keywords_for page as keywords %}
+{% for keyword in keywords %}
+    {% if not forloop.first %}, {% endif %}
+    {{ keyword }}
+{% endfor %}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+{{ page.description }}
+{% endmetablock %}{% endblock %}
+
+{% block title %}
+{% if page %}
+{% editable page.title %}{{ page.title }}{% endeditable %}
+{% else %}
+{% trans "Blog" %}
+{% endif %}
+{% endblock %}
+
+{% block breadcrumb_menu %}
+{{ block.super }}
+{% if tag or category or year or month or author %}
+<li>{% spaceless %}
+{% if tag %}
+    {% trans "Tag:" %} {{ tag }}
+{% else %}{% if category %}
+    {% trans "Category:" %} {{ category }}
+{% else %}{% if year or month %}
+    {% if month %}{{ month }}, {% endif %}{{ year }}
+{% else %}{% if author %}
+    {% trans "Author:" %} {{ author.get_full_name|default:author.username }}
+{% endif %}{% endif %}{% endif %}{% endif %}
+{% endspaceless %}
+</li>
+{% endif %}
+{% endblock %}
+
+{% block main %}
+<div class="container">
+
+
+
+    <div class="post-list">
+
+        <h1>
+        {% if tag or category or year or month or author %}
+            {% block blog_post_list_filterinfo %}
+            {% if tag %}
+                {% trans "Articles taggés avec" %} <strong><em>{{ tag }}</em></strong>
+            {% else %}{% if category %}
+            {% trans "Articles ayant pour catégorie" %} <strong><em>{{ category }}</em></strong>
+            {% else %}{% if year or month %}
+                {% trans "Articles de" %} <strong><em>{% if month %}{{ month }}, {% endif %}
+                {{ year }}</em></strong>
+            {% else %}{% if author %}
+                {% trans "Articles par" %}<strong><em>
+                {{ author.get_full_name|default:author.username }}</em></strong>
+            {% endif %}{% endif %}{% endif %}{% endif %}
+            {% endblock %}
+        {% else %}
+            Tous les articles
+        {% endif %}
+        </h1>
+
+
+
+        {% for blog_post in blog_posts.object_list %}
+            {% with month=blog_post.publish_date|date:"F" year=blog_post.publish_date|date:"Y" %}
+
+        {% ifchanged %}
+        {% if not forloop.first %}
+        </ul>
+        {% endif %}
+        <h3>{{ month|capfirst }} {{ year }}</h3>
+        <ul class="sitemap">
+        {% endifchanged %}
+
+
+            <li>
+                <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
+                <span>
+                    <i class="icon-calendar"></i>{{ blog_post.publish_date|date:"j F Y" }} 
+                    
+                    {% if blog_post.allow_comments %}
+                    ·
+                    <a href="{{ blog_post.get_absolute_url }}#comments">
+                        <i class="icon-comments-alt"></i>
+                        
+                        {% if blog_post.comments_count == 0 %}
+                            Commenter
+                        {% else %}
+                            {{ blog_post.comments_count }} commentaire{{ blog_post.comments_count|pluralize }}
+                        {% endif %}
+                    </a>
+                    {% endif %}
+
+                    {% with blog_post.categories.all as categories %}
+                    {% if categories %}
+                    ·
+                    <i class="icon-copy"></i>
+                    {% for current_category in categories %}
+                    {% if category == current_category %}<strong>{% endif %}
+                    <a href="{% url "blog_post_list_category" current_category.slug %}">{{ current_category }}</a>
+                    {% if category == current_category %}</strong>{% endif %}
+                    
+                    {% if not forloop.last %}, {% endif %}
+
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                </span>
+            </li>
+            {% endwith %}
+        {% endfor %}
+
+        </ul>
+
+    </div>
+
+</div>
+
+
+{% pagination_for blog_posts %}
+
+{% endblock %}
+
+{% block right_panel %}
+{% include "blog/includes/filter_panel.html" %}
+{% endblock %}
