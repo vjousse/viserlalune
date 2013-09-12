@@ -35,8 +35,10 @@
 
 </head>
 <body id="{% block body_id %}body{% endblock %}">
+
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
+
         <div class="navbar-header">
 
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -46,16 +48,20 @@
           </button>
           <a href="{% url "home" %}" class="navbar-brand"><i class="icon-male"></i> Debout les gens !</a>
         </div>
+
         <div class="navbar-collapse collapse" id="navbar-main">
             {% page_menu "pages/menus/dropdown.html" %}
         </div>
+
       </div>
     </div>
 
+    <div class="container">
 
         {% block main %}
         
         {% endblock %}
+    </div>
 
 <!--
 {% nevercache %}
@@ -73,18 +79,13 @@
 {% endspaceless %}
 </ul>
 
-</div>
 -->
-
-
-
-    </div>
-    <!-- END WRAPPER -->
 
 
 
     {% compress js %}
     <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
     {% endcompress %}
     
     {% include "includes/footer_scripts.html" %}

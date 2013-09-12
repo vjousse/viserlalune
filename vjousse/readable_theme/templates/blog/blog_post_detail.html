@@ -24,198 +24,144 @@
 {% block main %}
 
 
-        <div id="content">
+
+<div class="row">
+    <div class="col-lg-12">
+
+        <h1>{{ blog_post.title }}</span></h1>
 
 
-            <!-- ============================================
-              Page Title
-            ============================================= -->
-            <div id="page-title">
+        <div class="entry post-single clearfix">
 
+            <ul class="well well-sm entry_meta clearfix list-inline text-muted">
 
-                <div class="container clearfix">
+                <li><i class="icon-calendar"></i> {{ blog_post.publish_date|date:"j F Y" }}</li>
+                <li><i class="icon-user"></i> {{ blog_post.user.get_full_name|default:blog_post.user.username }}</li>
+                <li><i class="icon-copy"></i>
+                
+                {% with blog_post.categories.all as categories %}
+                {% if categories %}
+                {% for category in categories %}
+                <a href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
 
-                    <h1>Le Blog <span>/ {{ blog_post.title }}</span></h1>
+                {% if blog_post.allow_comments %}
+                <li>
 
-                </div>
-
-
-            </div>
-            <div class="content-wrap">
-
-                <div class="container clearfix">
-
-
-                    <!-- ============================================
-                        Page Content Start
-                    ============================================= -->
-                    <div class="postcontent nobottommargin clearfix">
-
-
-                        <div class="entry post-single clearfix">
-
-                            <div class="entry_title"><h2>{{ blog_post.title }}</h2></div>
-
-                            <ul class="entry_meta clearfix">
-
-                                <li><i class="icon-calendar"></i>{{ blog_post.publish_date|date:"j F Y" }}</li>
-                                <li><span>/</span><i class="icon-user"></i>{{ blog_post.user.get_full_name|default:blog_post.user.username }}</li>
-                                <li><span>/</span><i class="icon-copy"></i>
-                                
-                                {% with blog_post.categories.all as categories %}
-                                {% if categories %}
-                                {% for category in categories %}
-                                <a href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
-                                {% endfor %}
-                                {% endif %}
-                                {% endwith %}
-
-                                {% if blog_post.allow_comments %}
-                                <li><span>/</span>
-
-                                    <a href="{{ blog_post.get_absolute_url }}#comments">
-                                        <i class="icon-comments-alt"></i>
-                                        
-                                        {% if blog_post.comments_count == 0 %}
-                                            Commenter
-                                        {% else %}
-                                            {{ blog_post.comments_count }} commentaire{{ blog_post.comments_count|pluralize }}
-                                        {% endif %}
-                                    </a>
-                                </li>
-                                {% endif %}
-                            </ul>
-
-
-                            <div class="entry_content">
-
-                                {{ blog_post.content|richtext_filters|safe }}
-
-                                <div class="entry_share clearfix">
-
-                                    <span><strong>Partagez cet article :</strong></span>
-
-                                    <a href="http://facebook.com/sharer.php?u={{ request.build_absolute_uri }}&amp;t={{ blog_post.title|urlencode }}" class="ntip" title="Partager sur Facebook"><img src="{% static 'images/icons/social/post/facebook.png' %}" alt="Facebook" /></a>
-                                    <a href="http://twitter.com/home/?status={{ blog_post.title }} - {{ blog_post.short_url|urlencode }} via @vjousse " class="ntip" title="Tweet on Twitter"><img src="{% static 'images/icons/social/post/twitter.png' %}" alt="Twitter" /></a>
-                                    <a href="https://plus.google.com/share?url={{ blog_post.get_absolute_url }}" onclick="javascript:window.open(this.href,
-                                        '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false; " class="ntip" title="Partager sur Google Plus"><img src="{% static 'images/icons/social/post/googleplus.png' %}" alt="Google Plus" /></a>
-                                    <a href="#" onclick="popUp=window.open('https://www.stumbleupon.com/submit?url={{ blog_post.get_absolute_url }}', 'popupwindow', 'scrollbars=yes,width=800,height=400');popUp.focus();return false" class="ntip" title="Partager sur StumbleUpon"><img src="{% static 'images/icons/social/post/stumbleupon.png' %}" alt="StumbleUpon" /></a>
-                                    <a href="http://reddit.com/submit?url={{ blog_post.get_absolute_url }}&title={{ blog_post.title }}" class="ntip" title="Partager sur Reddit"><img src="{% static 'images/icons/social/post/reddit.png' %}" alt="Reddit" /></a>
-
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-
-
-                        {% if blog_post.related_posts.all %}
-
-                        <div style="position: relative;">
-
-                            <h4><span>Articles</span> en rapport</h4>
-                            <ul class="unstyled">
-                            {% for post in blog_post.related_posts.all %}
-                                <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
-                            {% endfor %}
-                            </ul>
-                        </div>
-                        <div class="clear"></div>
-
-                        <div class="double-line"></div>
+                    <a href="{{ blog_post.get_absolute_url }}#comments">
+                        <i class="icon-comments-alt"></i>
+                        
+                        {% if blog_post.comments_count == 0 %}
+                            Commenter
+                        {% else %}
+                            {{ blog_post.comments_count }} commentaire{{ blog_post.comments_count|pluralize }}
                         {% endif %}
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
 
 
-                        <div id="landing-subscribe" style="padding-top:30px;">
-                            <h3 class="center">Inscrivez-vous et <span>changez les choses</span> dès maintenant</h3>
-                            <p class="landing-desc center">
-                                Vous recevrez <strong>les mises à jour du blog</strong>, des <strong>recommandations de lecture</strong> et <strong>mes livres numériques</strong> directement dans votre boîte mail&nbsp;!
-                            </p>
+            <div class="entry_content">
 
-                            <p class="center">Et je suis comme vous, je déteste le SPAM.</p>
-                        </div>
+                {{ blog_post.content|richtext_filters|safe }}
 
-                        {% block blog_post_detail_comments %}
-                        {% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
-                        {% endblock %}
+                <div class="well">
 
-                        <div class="double-line"></div>
-                        <div class="clear"></div>
+                    <span><strong>Partagez cet article :</strong></span>
 
-
-
-                    {% block blog_post_previous_next %}
-                    <ul class="pager nobottommargin">
-                    {% with blog_post.get_previous_by_publish_date as previous %}
-                    {% if previous %}
-                    <li class="previous">
-                        <a href="{{ previous.get_absolute_url }}">&larr; {{ previous }}</a>
-                    </li>
-                    {% endif %}
-                    {% endwith %}
-                    {% with blog_post.get_next_by_publish_date as next %}
-                    {% if next %}
-                    <li class="next">
-                        <a href="{{ next.get_absolute_url }}">{{ next }} &rarr;</a>
-                    </li>
-                    {% endif %}
-                    {% endwith %}
-                    </ul>
-                    {% endblock %}
-
-
-                    </div>
-                    <!-- ============================================
-                        Page Content END
-                    ============================================= -->
-
-                    <!-- ============================================
-                        Sidebar Widgets
-                    ============================================= -->
-                    <div class="sidebar col_last nobottommargin clearfix">
-
-
-                        <div class="sidebar-widgets-wrap clearfix">
-
-
-                            <div class="lp-subscribe">
-                                <h3>Lettre d'information</h3>
-
-                                <div id="subscribe-form-result"></div>
-
-                            <!-- Begin MailChimp Signup Form -->
-                            <div id="mc_embed_signup">
-                                <form action="http://devorigin.us2.list-manage1.com/subscribe/post?u=0670d470b317c4c1e145e8a7a&amp;id=de4b63da2c" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                                    <div class="mc-field-group lp-subscribe-input">
-                                        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Entrez votre email">
-                                    </div>
-
-                                    <div class="lp-subscribe-submit">
-                                        <input type="submit" value="S'abonner" name="lp-subscribe-email-submit" id="lp-subscribe-email-submit">
-                                    </div>
-                                    <div id="mce-responses" class="clear">
-                                        <div class="response" id="mce-error-response" style="display:none"></div>
-                                        <div class="response" id="mce-success-response" style="display:none"></div>
-                                    </div>	
-                                </form>
-                            </div>
-
-                            <!--End mc_embed_signup-->
-
-                            </div>
-
-                            <p>Vous recevrez automatiquement les derniers articles du blog dans votre boîte mail. Pas de pub, pas de spam, juste du contenu.</p>
-
-
-                        </div>
-                    </div>
-
+                    <a href="http://facebook.com/sharer.php?u={{ request.build_absolute_uri }}&amp;t={{ blog_post.title|urlencode }}" class="ntip" style="color: #3b5998" title="Partager sur Facebook"><i class="icon-facebook-sign"></i> Facebook</a> — 
+                    <a href="http://twitter.com/home/?status={{ blog_post.title }} - {{ request.build_absolute_uri }} via @vjousse " class="ntip" style="color: #4099FF" title="Tweet on Twitter"><i class="icon-twitter-sign"></i> Twitter</a> — 
+                    <a href="https://plus.google.com/share?url={{ request.build_absolute_uri }}" onclick="javascript:window.open(this.href,
+                        '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false; " class="ntip" style="color: #b63324;" title="Partager sur Google Plus"><i class="icon-google-plus-sign"></i> Google +</a>
 
                 </div>
+
             </div>
 
+            {% if blog_post.related_posts.all %}
+
+            <div style="position: relative;">
+
+                <h4><span>Articles</span> en rapport</h4>
+                <ul class="unstyled">
+                {% for post in blog_post.related_posts.all %}
+                    <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+                {% endfor %}
+                </ul>
+            </div>
+            <div class="clear"></div>
+
+            <div class="double-line"></div>
+            {% endif %}
+
+
+            {% block blog_post_detail_comments %}
+            {% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
+            {% endblock %}
+
+            <div class="double-line"></div>
+
+
+            {% block blog_post_previous_next %}
+            <ul class="pager nobottommargin">
+            {% with blog_post.get_previous_by_publish_date as previous %}
+            {% if previous %}
+            <li class="previous">
+                <a href="{{ previous.get_absolute_url }}">&larr; {{ previous }}</a>
+            </li>
+            {% endif %}
+            {% endwith %}
+            {% with blog_post.get_next_by_publish_date as next %}
+            {% if next %}
+            <li class="next">
+                <a href="{{ next.get_absolute_url }}">{{ next }} &rarr;</a>
+            </li>
+            {% endif %}
+            {% endwith %}
+            </ul>
+            {% endblock %}
+
+
+
+        <!-- END entry-content -->
         </div>
 
+    <!-- END col-lg-8 -->
+    </div>
+    <div class="col-lg-3" style="display: none;">
+        <h3>Lettre d'information</h3>
+
+        <div id="subscribe-form-result"></div>
+
+        <!-- Begin MailChimp Signup Form -->
+        <div id="mc_embed_signup">
+            <form action="http://devorigin.us2.list-manage1.com/subscribe/post?u=0670d470b317c4c1e145e8a7a&amp;id=de4b63da2c" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" role="form" novalidate>
+                <div class="form-group">
+                    
+                    <input type="email" value="" name="EMAIL" class="required email form-control" id="mce-EMAIL" placeholder="Entrez votre email">
+
+                </div>
+
+                <input type="submit" class="btn btn-submit" value="S'abonner" name="lp-subscribe-email-submit" id="lp-subscribe-email-submit">
+
+                <div id="mce-responses" class="clear">
+                    <div class="response" id="mce-error-response" style="display:none"></div>
+                    <div class="response" id="mce-success-response" style="display:none"></div>
+                </div>	
+            </form>
+        </div>
+
+        <!--End mc_embed_signup-->
+
+
+        <p class="text-muted"><small>Vous recevrez automatiquement les derniers articles du blog dans votre boîte mail. Pas de pub, pas de spam, juste du contenu.</small></p>
+    </div>
+
+
+</div>
 
 
 {% endblock %}

@@ -6,7 +6,7 @@
 
     {% for page in page_branch %}
 
-    <li class="{% if page.is_current_or_ascendant %} active{% endif %}{% if page.has_children %}dropdown{% endif %}">
+    <li class="{% if page.is_current_or_ascendant %} active{% endif %}{% if page.has_children %} dropdown{% endif %}">
         {% if page.has_children %}
         <a id="{{ page.slug }}" href="#" data-toggle="dropdown" class="dropdown-toggle">{{ page.title }} <span class="caret"></span></a>
         {% else %}
