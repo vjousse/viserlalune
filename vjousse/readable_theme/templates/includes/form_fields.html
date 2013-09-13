@@ -1,4 +1,4 @@
-{% load mezzanine_tags %}
+{% load mezzanine_tags widget_tweaks %}
 
 {% if form_for_fields.non_field_errors %}
 <div class="control-group error non-field-errors">
@@ -17,19 +17,21 @@
 {% if field.is_hidden %}
 {{ field }}
 {% else %}
-<div class="control-group input_{{ field.id_for_label }} {{ field.field.type }}
-    {% if field.errors %} error{% endif %}">
-    {{ field.label_tag }}
-    <div class="controls">
-        {{ field }}
+<div class="form-group input_{{ field.id_for_label }}">
+    <div class="col-lg-2 control-label">
+        {{ field.label_tag }}
+    </div>
+
+    <div class="controls col-lg-8">
+        {{ field|attr:"class:form-control" }}
         {% if field.errors %}
-        <span class="help-inline">
+        <span class="help-block">
             {% for e in field.errors %}
             {% if not forloop.first %} / {% endif %}{{ e }}
             {% endfor %}
         </span>
         {% else %}
-        <span class="help-inline">{{ field.help_text }}</span>
+        <span class="help-block">{{ field.help_text }}</span>
         {% endif %}
     </div>
 </div>

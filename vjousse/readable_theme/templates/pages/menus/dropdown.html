@@ -1,4 +1,4 @@
-{% load i18n future pages_tags %}
+{% load i18n future pages_tags mezzanine_tags %}
 {% spaceless %}
 {% if page_branch_in_menu %}
 
@@ -16,6 +16,10 @@
     </li>
 
     {% endfor %}
+
+    {% ifinstalled mezzanine.blog %}
+    <li class="rss"><a href="{% url "blog_post_feed" "atom" %}"><i class="icon-rss"></i></a></li>
+    {% endifinstalled %}
 
 </ul>
 

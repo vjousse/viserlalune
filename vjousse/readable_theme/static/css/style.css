@@ -1,6 +1,10 @@
 #body{
-    padding-top: 60px;
+    padding-top: 80px;
     font-size: 20px;
+}
+
+.navbar-default .navbar-nav > li.rss > a {
+    color: #FF6600;
 }
 
 .sitemap span {
@@ -27,4 +31,12 @@
 
 .btn-submit {
     background-color: #ddd;
+}
+
+.top-ten li {
+   padding: 5px;
+}
+
+.well-meta {
+    margin-top: 40px;
 }

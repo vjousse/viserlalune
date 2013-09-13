@@ -50,18 +50,18 @@
 # field instance. When specifying the field class, the path
 # ``django.models.db.`` can be omitted for regular Django model fields.
 #
-EXTRA_MODEL_FIELDS = (
-    (
-        # Dotted path to field.
-        "mezzanine.pages.models.Page.short_description",
-        # Dotted path to field class.
-        "django.db.models.CharField",
-        # Positional args for field class.
-        ("Short Description",),
-        # Keyword args for field class.
-        {"max_length": 200},
-    ),
-)
+#EXTRA_MODEL_FIELDS = (
+#    (
+#        # Dotted path to field.
+#        "mezzanine.pages.models.Page.short_description",
+#        # Dotted path to field class.
+#        "django.db.models.CharField",
+#        # Positional args for field class.
+#        ("Short Description",),
+#        # Keyword args for field class.
+#        {"max_length": 200},
+#    ),
+#)
 
 # Setting to turn on featured images for blog posts. Defaults to False.
 #
@@ -246,6 +246,7 @@ INSTALLED_APPS = (
     #"mezzanine.mobile",
     "vjousse.sitecontent",
     "mdown",
+    "widget_tweaks",
 )
 
 # List of processors used by RequestContext to populate the context.

@@ -1,8 +1,6 @@
 {% load i18n mezzanine_tags comment_tags %}
 
-
-
-<div id="comments" class="clearfix">
+<div id="comments" class="well clearfix">
 
 {% if object_for_comments.comments_count > 0 %}
     <h3 id="comments-title"><span>{{ object_for_comments.comments_count }}</span> Commentaire{{ object_for_comments.comments_count|pluralize }}</h3>
@@ -18,15 +16,20 @@ $(function() {
 });
 </script>
 <style>.input_id_honeypot {display:none !important;}</style>
-<h3>{% trans "New Comment" %}</h3>
-<form method="post" id="comment" action="{{ comment_url }}#comment">
+<form method="post" class="form-horizontal" id="comment" action="{{ comment_url }}#comment">
+    <fieldset>
+        <legend>{% trans "New Comment" %}</legend>
     {% if not request.POST.replied_to %}
     {% fields_for posted_comment_form %}
     {% else %}
     {% fields_for unposted_comment_form %}
     {% endif %}
-    <div class="form-actions">
-        <input class="btn" type="submit" value="Soumettre le commentaire">
+    <fieldset>
+    <div class="form-group">
+        <div class="col-lg-8 col-lg-offset-2">
+            <button class="btn btn-primary" type="submit">Soumettre le commentaire</button>
+        </div>
     </div>
+
 </form>
 </div>

@@ -33,42 +33,30 @@
 
         <div class="entry post-single clearfix">
 
-            <ul class="well well-sm entry_meta clearfix list-inline text-muted">
-
-                <li><i class="icon-calendar"></i> {{ blog_post.publish_date|date:"j F Y" }}</li>
-                <li><i class="icon-user"></i> {{ blog_post.user.get_full_name|default:blog_post.user.username }}</li>
-                <li><i class="icon-copy"></i>
-                
-                {% with blog_post.categories.all as categories %}
-                {% if categories %}
-                {% for category in categories %}
-                <a href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
-                {% endfor %}
-                {% endif %}
-                {% endwith %}
-
-                {% if blog_post.allow_comments %}
-                <li>
-
-                    <a href="{{ blog_post.get_absolute_url }}#comments">
-                        <i class="icon-comments-alt"></i>
-                        
-                        {% if blog_post.comments_count == 0 %}
-                            Commenter
-                        {% else %}
-                            {{ blog_post.comments_count }} commentaire{{ blog_post.comments_count|pluralize }}
-                        {% endif %}
-                    </a>
-                </li>
-                {% endif %}
-            </ul>
-
 
             <div class="entry_content">
 
                 {{ blog_post.content|richtext_filters|safe }}
 
-                <div class="well">
+                <div class="well well-meta">
+
+                    <ul class="entry_meta clearfix list-inline text-muted">
+
+                        <li><i class="icon-calendar"></i> Publié le {{ blog_post.publish_date|date:"j F Y" }}</li>
+                        <li><i class="icon-user"></i> par {{ blog_post.user.get_full_name|default:blog_post.user.username }}</li>
+                        <li><i class="icon-copy"></i>
+                        
+                        {% with blog_post.categories.all as categories %}
+                        {% if categories %}
+                        dans
+                        {% for category in categories %}
+                        <a href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+
+                    </ul>
+
 
                     <span><strong>Partagez cet article :</strong></span>
 
@@ -129,37 +117,8 @@
         <!-- END entry-content -->
         </div>
 
-    <!-- END col-lg-8 -->
+    <!-- END col-lg-12 -->
     </div>
-    <div class="col-lg-3" style="display: none;">
-        <h3>Lettre d'information</h3>
-
-        <div id="subscribe-form-result"></div>
-
-        <!-- Begin MailChimp Signup Form -->
-        <div id="mc_embed_signup">
-            <form action="http://devorigin.us2.list-manage1.com/subscribe/post?u=0670d470b317c4c1e145e8a7a&amp;id=de4b63da2c" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" role="form" novalidate>
-                <div class="form-group">
-                    
-                    <input type="email" value="" name="EMAIL" class="required email form-control" id="mce-EMAIL" placeholder="Entrez votre email">
-
-                </div>
-
-                <input type="submit" class="btn btn-submit" value="S'abonner" name="lp-subscribe-email-submit" id="lp-subscribe-email-submit">
-
-                <div id="mce-responses" class="clear">
-                    <div class="response" id="mce-error-response" style="display:none"></div>
-                    <div class="response" id="mce-success-response" style="display:none"></div>
-                </div>	
-            </form>
-        </div>
-
-        <!--End mc_embed_signup-->
-
-
-        <p class="text-muted"><small>Vous recevrez automatiquement les derniers articles du blog dans votre boîte mail. Pas de pub, pas de spam, juste du contenu.</small></p>
-    </div>
-
 
 </div>
 
