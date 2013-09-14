@@ -25,12 +25,14 @@
 
             <div class="comment-content clearfix col-lg-11">
                 <div class="comment-author">
-                {% if comment.url %}
-                    <a href="{{ comment.url }}" rel="external nofollow" class="url">{{ comment.user_name }}</a>
-                {% else %}
-                    {{ comment.user_name }}
-                {% endif %}
-                <span><a title="Lien vers ce commentaire" href="{{ request.path }}#comment-{{ comment.id }}">{% blocktrans with sometime=comment.submit_date|timesince %}{{ sometime }} ago{% endblocktrans %}</a> · <a href="#reply-{{ comment.id }}" class="reply" data-id="{{comment.id}}">{% trans "Reply" %}</a></span>
+                    <strong>
+                    {% if comment.url %}
+                        <a href="{{ comment.url }}" rel="external nofollow" class="url">{{ comment.user_name }}</a>
+                    {% else %}
+                        {{ comment.user_name }}
+                    {% endif %}
+                    </strong>
+                <small><span><a title="Lien vers ce commentaire" href="{{ request.path }}#comment-{{ comment.id }}">{% blocktrans with sometime=comment.submit_date|timesince %}{{ sometime }} ago{% endblocktrans %}</a> · <a href="#reply-{{ comment.id }}" class="reply" data-id="{{comment.id}}">{% trans "Reply" %}</a></span></small>
                 </div>
 
             <p>{{ comment.comment|comment_filter }}</p>

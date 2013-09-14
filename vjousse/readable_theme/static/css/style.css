@@ -41,8 +41,22 @@
     margin-top: 40px;
 }
 
+/* Comments */
+
 ol.commentlist {
     list-style-type: none;
     padding-left: 0px;
     margin-left: 0px;
+}
+
+.comment-author span { display: block; }
+
+
+.comment-content .comment-author span a {
+    font-weight: normal;
+    color: #AAA;
+}
+
+.comment-wrap {
+    padding-bottom: 20px;
 }
