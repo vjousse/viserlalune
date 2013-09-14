@@ -37,16 +37,26 @@
 
             <p>{{ comment.comment|comment_filter }}</p>
 
-            <form class="reply-form" method="post" id="reply-{{ comment.id }}"
+            <form class="reply-form form-horizontal" method="post" id="reply-{{ comment.id }}"
                 action="{{ comment_url }}#reply-{{ comment.id }}"
                 {% if replied_to != comment.id %}style="display:none;"{% endif %}>
+
+                <fieldset>
+                    <legend>Répondre</legend>
+
                 {% if replied_to == comment.id %}
                 {% fields_for posted_comment_form %}
                 {% else %}
                 {% fields_for unposted_comment_form %}
                 {% endif %}
                 <input type="hidden" name="replied_to" value="{{ comment.id }}">
-                <input id="submit-button" class="btn" type="submit" value="{% trans "Reply" %}">
+                </fieldset>
+
+                <div class="form-group">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <button class="btn btn-primary" type="submit">Répondre</button>
+                    </div>
+                </div>
             </form>
 
             </div>

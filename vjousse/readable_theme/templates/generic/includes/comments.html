@@ -7,15 +7,6 @@
     {% comment_thread object_for_comments %}
 {% endif %}
 
-<script>
-$(function() {
-    $('.reply').click(function() {
-        $('.reply-form').hide();
-        $("#reply-" + $(this).data("id")).toggle();
-    });
-});
-</script>
-<style>.input_id_honeypot {display:none !important;}</style>
 <form method="post" class="form-horizontal" id="comment" action="{{ comment_url }}#comment">
     <fieldset>
         <legend>{% trans "New Comment" %}</legend>

@@ -8,43 +8,53 @@
         {% if not comment.is_removed and comment.is_public %}
         <div id="comment-{{ comment.id }}" class="comment-wrap clearfix">
 
-            <div class="comment-meta">
+            <div class="comment-meta col-lg-1">
                 <div class="comment-author vcard">
                     <span class="comment-avatar clearfix">
                         {% if comment.url %}
                         <a href="{{ comment.url }}">
-                            <img src="{% gravatar_url comment.email 40 %}" class="avatar photo avatar-40">
+                            <img src="{% gravatar_url comment.email 40 %}" class="img-rounded avatar photo avatar-40">
 
                         </a>
                         {% else %}
-                        <img src="{% gravatar_url comment.email 40 %}" class="avatar photo avatar-40">
+                        <img src="{% gravatar_url comment.email 40 %}" class="img-rounded avatar photo avatar-40">
                         {% endif %}
                     </span>
                 </div>
             </div>
 
-            <div class="comment-content clearfix">
+            <div class="comment-content clearfix col-lg-11">
                 <div class="comment-author">
-                {% if comment.url %}
-                    <a href="{{ comment.url }}" rel="external nofollow" class="url">{{ comment.user_name }}</a>
-                {% else %}
-                    {{ comment.user_name }}
-                {% endif %}
-                    <span><a title="Lien vers ce commentaire" href="{{ request.path }}#comment-{{ comment.id }}">{% blocktrans with sometime=comment.submit_date|timesince %}{{ sometime }} ago{% endblocktrans %}</a> · <a href="#reply-{{ comment.id }}" class="reply" data-id="{{comment.id}}">{% trans "Reply" %}</a></span>
+                    <strong>
+                    {% if comment.url %}
+                        <a href="{{ comment.url }}" rel="external nofollow" class="url">{{ comment.user_name }}</a>
+                    {% else %}
+                        {{ comment.user_name }}
+                    {% endif %}
+                    </strong>
+                <small><span><a title="Lien vers ce commentaire" href="{{ request.path }}#comment-{{ comment.id }}">{% blocktrans with sometime=comment.submit_date|timesince %}{{ sometime }} ago{% endblocktrans %}</a> · <a href="#reply-{{ comment.id }}" class="reply" data-id="{{comment.id}}">{% trans "Reply" %}</a></span></small>
                 </div>
 
             <p>{{ comment.comment|comment_filter }}</p>
 
-            <form class="reply-form" method="post" id="reply-{{ comment.id }}"
+            <form class="reply-form form-horizontal" method="post" id="reply-{{ comment.id }}"
                 action="{{ comment_url }}#reply-{{ comment.id }}"
                 {% if replied_to != comment.id %}style="display:none;"{% endif %}>
-                {% if replied_to == comment.id %}
-                {% fields_for posted_comment_form %}
-                {% else %}
-                {% fields_for unposted_comment_form %}
-                {% endif %}
-                <input type="hidden" name="replied_to" value="{{ comment.id }}">
-                <input id="submit-button" class="btn" type="submit" value="{% trans "Reply" %}">
+
+                <fieldset>
+                    <legend>Répondre</legend>
+                    {% if replied_to == comment.id %}
+                    {% fields_for posted_comment_form %}
+                    {% else %}
+                    {% fields_for unposted_comment_form %}
+                    {% endif %}
+                    <input type="hidden" name="replied_to" value="{{ comment.id }}">
+                </fieldset>
+                <div class="form-group">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <button class="btn btn-primary" type="submit">Répondre</button>
+                    </div>
+                </div>
             </form>
 
             </div>

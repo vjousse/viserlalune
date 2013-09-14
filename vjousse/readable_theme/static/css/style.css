@@ -41,12 +41,21 @@
     margin-top: 40px;
 }
 
+.input_id_honeypot {display:none !important;}
+
 /* Comments */
 
 ol.commentlist {
     list-style-type: none;
     padding-left: 0px;
     margin-left: 0px;
+}
+
+ul.children {
+    list-style-type: none;
+}
+.vcard {
+    text-align: right;
 }
 
 .comment-author span { display: block; }
