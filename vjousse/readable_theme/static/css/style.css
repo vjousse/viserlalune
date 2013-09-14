@@ -40,3 +40,9 @@
 .well-meta {
     margin-top: 40px;
 }
+
+ol.commentlist {
+    list-style-type: none;
+    padding-left: 0px;
+    margin-left: 0px;
+}

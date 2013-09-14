@@ -8,22 +8,22 @@
         {% if not comment.is_removed and comment.is_public %}
         <div id="comment-{{ comment.id }}" class="comment-wrap clearfix">
 
-            <div class="comment-meta">
+            <div class="comment-meta col-lg-1">
                 <div class="comment-author vcard">
                     <span class="comment-avatar clearfix">
                         {% if comment.url %}
                         <a href="{{ comment.url }}">
-                            <img src="{% gravatar_url comment.email 60 %}" class="avatar photo avatar-60">
+                            <img src="{% gravatar_url comment.email 60 %}" class="img-rounded avatar photo avatar-60">
 
                         </a>
                         {% else %}
-                        <img src="{% gravatar_url comment.email 60 %}" class="avatar photo avatar-60">
+                        <img src="{% gravatar_url comment.email 60 %}" class="img-rounded avatar photo avatar-60">
                         {% endif %}
                     </span>
                 </div>
             </div>
 
-            <div class="comment-content clearfix">
+            <div class="comment-content clearfix col-lg-11">
                 <div class="comment-author">
                 {% if comment.url %}
                     <a href="{{ comment.url }}" rel="external nofollow" class="url">{{ comment.user_name }}</a>

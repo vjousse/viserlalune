@@ -17,7 +17,7 @@
 {% if field.is_hidden %}
 {{ field }}
 {% else %}
-<div class="form-group input_{{ field.id_for_label }}">
+<div class="{% if field.errors %}has-error {% endif %}form-group input_{{ field.id_for_label }}">
     <div class="col-lg-2 control-label">
         {{ field.label_tag }}
     </div>
