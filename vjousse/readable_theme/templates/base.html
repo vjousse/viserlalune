@@ -68,29 +68,27 @@
     </div>
 
     <div class="container">
+        {% nevercache %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" data-alert="alert">
+            <a class="close" href="#" onclick="$(this).parent().fadeOut('fast'); return false;">×</a>{{ message }}
+        </div>
+        {% endfor %}
+        {% endnevercache %}
+
+
+        <ul class="breadcrumb">
+        {% spaceless %}
+        {% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
+        {% endspaceless %}
+        </ul>
+
 
         {% block main %}
         
         {% endblock %}
     </div>
 
-<!--
-{% nevercache %}
-{% for message in messages %}
-<div class="alert alert-{{ message.tags }}" data-alert="alert">
-    <a class="close" href="#" onclick="$(this).parent().fadeOut('fast'); return false;">×</a>{{ message }}
-</div>
-{% endfor %}
-{% endnevercache %}
-
-
-<ul class="breadcrumb">
-{% spaceless %}
-{% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
-{% endspaceless %}
-</ul>
-
--->
 
 
 
