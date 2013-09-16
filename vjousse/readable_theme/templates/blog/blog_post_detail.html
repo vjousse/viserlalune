@@ -68,31 +68,7 @@
                 </div>
 
             </div>
-
-            {% if blog_post.related_posts.all %}
-
-            <div style="position: relative;">
-
-                <h4><span>Articles</span> en rapport</h4>
-                <ul class="unstyled">
-                {% for post in blog_post.related_posts.all %}
-                    <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
-                {% endfor %}
-                </ul>
-            </div>
-            <div class="clear"></div>
-
-            <div class="double-line"></div>
-            {% endif %}
-
-
-            {% block blog_post_detail_comments %}
-            {% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
-            {% endblock %}
-
-            <div class="double-line"></div>
-
-
+            
             {% block blog_post_previous_next %}
             <ul class="pager nobottommargin">
             {% with blog_post.get_previous_by_publish_date as previous %}
@@ -111,6 +87,27 @@
             {% endwith %}
             </ul>
             {% endblock %}
+
+
+            {% if blog_post.related_posts.all %}
+
+            <div style="position: relative;">
+
+                <h4><span>Articles</span> en rapport</h4>
+                <ul class="unstyled">
+                {% for post in blog_post.related_posts.all %}
+                    <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+                {% endfor %}
+                </ul>
+            </div>
+
+            {% endif %}
+
+
+            {% block blog_post_detail_comments %}
+            {% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
+            {% endblock %}
+
 
 
 
