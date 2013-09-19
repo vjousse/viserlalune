@@ -51,7 +51,7 @@
           <a href="{% url "home" %}" class="navbar-brand"><i class="icon-male"></i> Debout les gens !</a>
         </div>
 
-        <div class="navbar-collapse collapse" id="navbar-main">
+        <nav class="navbar-collapse collapse" id="navbar-main">
             {% page_menu "pages/menus/dropdown.html" %}
 
             <form action="http://devorigin.us2.list-manage1.com/subscribe/post?u=0670d470b317c4c1e145e8a7a&amp;id=de4b63da2c" class="navbar-form navbar-right" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" role="form" novalidate>
@@ -64,7 +64,7 @@
                     </span>
                 </div>
             </form>
-        </div>
+        </nav>
 
 
       </div>
@@ -80,15 +80,17 @@
         {% endnevercache %}
 
 
-        <ul class="breadcrumb">
-        {% spaceless %}
-        {% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
-        {% endspaceless %}
-        </ul>
+        <nav>
+            <ul class="breadcrumb">
+            {% spaceless %}
+            {% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
+            {% endspaceless %}
+            </ul>
+        </nav>
 
 
         {% block main %}
-        
+
         {% endblock %}
     </div>
 
@@ -100,7 +102,7 @@
     <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
     {% endcompress %}
-    
+
     {% include "includes/footer_scripts.html" %}
     {% editable_loader %}
 </body>
