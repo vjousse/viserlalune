@@ -64,26 +64,26 @@ env.nevercache_key = conf.get("NEVERCACHE_KEY", "")
 # also run.
 
 templates = {
-    "nginx": {
-        "local_path": "deploy/nginx.conf",
-        "remote_path": "/etc/nginx/sites-enabled/%(proj_name)s.conf",
-        "reload_command": "service nginx restart",
-    },
-    "supervisor": {
-        "local_path": "deploy/supervisor.conf",
-        "remote_path": "/etc/supervisor/conf.d/%(proj_name)s.conf",
-        "reload_command": "supervisorctl reload",
-    },
-    "cron": {
-        "local_path": "deploy/crontab",
-        "remote_path": "/etc/cron.d/%(proj_name)s",
-        "owner": "root",
-        "mode": "600",
-    },
-    "gunicorn": {
-        "local_path": "deploy/gunicorn.conf.py",
-        "remote_path": "%(proj_path)s/gunicorn.conf.py",
-    },
+#    "nginx": {
+#        "local_path": "deploy/nginx.conf",
+#        "remote_path": "/etc/nginx/sites-enabled/%(proj_name)s.conf",
+#        "reload_command": "service nginx restart",
+#    },
+#    "supervisor": {
+#        "local_path": "deploy/supervisor.conf",
+#        "remote_path": "/etc/supervisor/conf.d/%(proj_name)s.conf",
+#        "reload_command": "supervisorctl reload",
+#    },
+#    "cron": {
+#        "local_path": "deploy/crontab",
+#        "remote_path": "/etc/cron.d/%(proj_name)s",
+#        "owner": "root",
+#        "mode": "600",
+#    },
+#    "gunicorn": {
+#        "local_path": "deploy/gunicorn.conf.py",
+#        "remote_path": "%(proj_path)s/gunicorn.conf.py",
+#    },
     "settings": {
         "local_path": "deploy/live_settings.py",
         "remote_path": "%(proj_path)s/local_settings.py",
@@ -386,23 +386,23 @@ def create():
          (env.proj_name, env.proj_name, env.locale, env.locale))
 
     # Set up SSL certificate.
-    conf_path = "/etc/nginx/conf"
-    if not exists(conf_path):
-        sudo("mkdir %s" % conf_path)
-    with cd(conf_path):
-        crt_file = env.proj_name + ".crt"
-        key_file = env.proj_name + ".key"
-        if not exists(crt_file) and not exists(key_file):
-            try:
-                crt_local, = glob(join("deploy", "*.crt"))
-                key_local, = glob(join("deploy", "*.key"))
-            except ValueError:
-                parts = (crt_file, key_file, env.live_host)
-                sudo("openssl req -new -x509 -nodes -out %s -keyout %s "
-                     "-subj '/CN=%s' -days 3650" % parts)
-            else:
-                upload_template(crt_local, crt_file, use_sudo=True)
-                upload_template(key_local, key_file, use_sudo=True)
+#    conf_path = "/etc/nginx/conf"
+#    if not exists(conf_path):
+#        sudo("mkdir %s" % conf_path)
+#    with cd(conf_path):
+#        crt_file = env.proj_name + ".crt"
+#        key_file = env.proj_name + ".key"
+#        if not exists(crt_file) and not exists(key_file):
+#            try:
+#                crt_local, = glob(join("deploy", "*.crt"))
+#                key_local, = glob(join("deploy", "*.key"))
+#            except ValueError:
+#                parts = (crt_file, key_file, env.live_host)
+#                sudo("openssl req -new -x509 -nodes -out %s -keyout %s "
+#                     "-subj '/CN=%s' -days 3650" % parts)
+#            else:
+#                upload_template(crt_local, crt_file, use_sudo=True)
+#                upload_template(key_local, key_file, use_sudo=True)
 
     # Set up project.
     upload_template_and_reload("settings")
