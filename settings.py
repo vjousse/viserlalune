@@ -121,10 +121,6 @@ SITE_ID = 1
 USE_I18N = True
 USE_L10N = True
 
-# Make these unique, and don't share it with anybody.
-SECRET_KEY = "2cb06ff2-12c5-44c8-80c8-f0c95435aa866bbe8749-58bb-4a0d-81bc-cab4c2c2709f4948d3f4-45fa-404a-9cb3-3d2156da9876"
-NEVERCACHE_KEY = "66f08977-b6de-458d-a9a6-6904566998d0dd047750-8232-46a2-bfd9-ffda813f8bfa2895d75e-ff6e-4457-b2f3-1f5e5e80828e"
-
 # Tuple of IP addresses, as strings, that:
 #   * See debug comments, when DEBUG is true
 #   * Receive x-headers
