@@ -232,7 +232,7 @@ INSTALLED_APPS = (
     "django.contrib.sites",
     "django.contrib.sitemaps",
     "django.contrib.staticfiles",
-    "vjousse.readable_theme",
+    "readable_theme",
     "mezzanine.boot",
     "mezzanine.conf",
     "mezzanine.core",
@@ -244,7 +244,7 @@ INSTALLED_APPS = (
     "mezzanine.twitter",
     #"mezzanine.accounts",
     #"mezzanine.mobile",
-    "vjousse.sitecontent",
+    "sitecontent",
     "mdown",
     "widget_tweaks",
 )
