@@ -33,3 +33,6 @@ CACHES = {
 }
 
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+
+
+ALLOWED_HOSTS = ['vincent.jousse.org', 'dev.jousse.org']
