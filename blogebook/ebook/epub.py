@@ -1,3 +1,4 @@
+from mezzanine.core.templatetags import mezzanine_tags
 from ebooklib import epub
 import tempfile
 
@@ -15,7 +16,7 @@ def generate_from_posts(posts):
 
     for post in posts:
         c1 = epub.EpubHtml(title=post.title, file_name='%s.xhtml' % post.slug, lang='fr')
-        c1.content=u'<html><head></head><body><h1>%s</h1>%s</body></html>' % (post.title, post.content)
+        c1.content=u'<html><head></head><body><h1>%s</h1>%s</body></html>' % (post.title, mezzanine_tags.richtext_filters(post.content))
         book.add_item(c1)
         chapters.append(c1)
 
