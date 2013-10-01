@@ -351,7 +351,7 @@ def install():
     sudo("pip install virtualenv mercurial")
 
 
-@task
+#@task
 @log_call
 def create():
     """
