@@ -486,7 +486,7 @@ def deploy():
     for name in get_templates():
         upload_template_and_reload(name)
     with project():
-        backup("last.db")
+        backup("~/last.db")
         static_dir = static()
         if exists(static_dir):
             run("tar -cf last.tar %s" % static_dir)
