@@ -241,6 +241,7 @@ INSTALLED_APPS = (
     #"mezzanine.accounts",
     #"mezzanine.mobile",
     "sitecontent",
+    "blogebook",
     "mdown",
     "widget_tweaks",
 )

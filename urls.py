@@ -13,6 +13,8 @@ admin.autodiscover()
 
 urlpatterns = patterns("",
 
+    url(r'^ebook/', include('blogebook.urls')),
+
     # Change the admin prefix here to use an alternate URL for the
     # admin interface, which would be marginally more secure.
     ("^admin/", include(admin.site.urls)),
