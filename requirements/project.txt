@@ -1,3 +1,4 @@
+BeautifulSoup==3.2.1
 Django==1.5.2
 -e git://github.com/aerkalov/ebooklib.git@master#egg=EbookLib
 Fabric==1.7.0
