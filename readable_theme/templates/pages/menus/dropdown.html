@@ -18,7 +18,7 @@
     {% endfor %}
 
     {% ifinstalled mezzanine.blog %}
-    <!--<li class="rss"><a href="{% url "blog_post_feed" "atom" %}"><i class="icon-rss"></i></a></li>-->
+    <li class="rss"><a href="{% url "sitecontent.views.blog_post_feed_richtext_filters" "atom" %}"><i class="icon-rss"></i></a></li>
     {% endifinstalled %}
 
 </ul>
