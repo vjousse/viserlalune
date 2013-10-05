@@ -1,9 +1,8 @@
-BeautifulSoup==3.2.1
-Django==1.5.2
--e git://github.com/aerkalov/ebooklib.git@master#egg=EbookLib
+Django==1.5.4
+-e git://github.com/aerkalov/ebooklib.git@410c1b100f4fe4cf54bcb6d1619398e1cde04c97#egg=EbookLib-master
 Fabric==1.7.0
 Markdown==2.3.1
-Mezzanine==1.4.10
+Mezzanine==1.4.16
 Pillow==2.1.0
 South==0.8.2
 bleach==1.2.2
@@ -17,13 +16,13 @@ gunicorn==18.0
 html5lib==0.95
 lxml==3.2.3
 mezzanine-mdown==0.1a3
-oauthlib==0.5.1
+oauthlib==0.6.0
 paramiko==1.11.0
 psycopg2==2.5.1
 pycrypto==2.6
-pytz==2013b
+pytz==2013.7
 requests==1.2.3
-requests-oauthlib==0.3.2
+requests-oauthlib==0.3.3
 setproctitle==1.1.7
 six==1.4.1
 wsgiref==0.1.2
