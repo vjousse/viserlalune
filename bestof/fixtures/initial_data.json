@@ -1,0 +1,33 @@
+[
+  {
+    "model": "bestof.category",
+    "pk": 1,
+    "fields": {
+      "name": "Articles français",
+      "slug": "articles-francais"
+    }
+  },
+  {
+    "model": "bestof.category",
+    "pk": 2,
+    "fields": {
+      "name": "Articles anglais",
+      "slug": "articles-anglais"
+    }
+  },
+
+  {
+    "model": "bestof.entry",
+    "pk": 1,
+    "fields": {
+      "title": " The Courage to Live Consciously",
+      "url": "http://www.stevepavlina.com/articles/courage-to-live-consciously.htm",
+      "description": "Steve signe ici un de ses plus beaux articles.",
+      "pub_date":"2013-10-17T08:16:59.844Z",
+      "slug":"the-courage-to-live-consciously",
+      "category": 2
+
+    }
+  }
+]
+
