@@ -14,6 +14,7 @@ admin.autodiscover()
 urlpatterns = patterns("",
 
     url(r'^ebook/', include('blogebook.urls')),
+    url(r'^bestof/', include('bestof.urls')),
 
     # Change the admin prefix here to use an alternate URL for the
     # admin interface, which would be marginally more secure.
