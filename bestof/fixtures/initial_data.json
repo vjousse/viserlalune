@@ -4,7 +4,8 @@
     "pk": 1,
     "fields": {
       "name": "Articles français",
-      "slug": "articles-francais"
+      "slug": "articles-francais",
+      "sort": 2
     }
   },
   {
@@ -12,7 +13,26 @@
     "pk": 2,
     "fields": {
       "name": "Articles anglais",
-      "slug": "articles-anglais"
+      "slug": "articles-anglais",
+      "sort": 3
+    }
+  },
+  {
+    "model": "bestof.category",
+    "pk": 3,
+    "fields": {
+      "name": "Livres français",
+      "slug": "livres-francais",
+      "sort": 0
+    }
+  },
+  {
+    "model": "bestof.category",
+    "pk": 4,
+    "fields": {
+      "name": "Livres anglais",
+      "slug": "livres-anglais",
+      "sort": 1
     }
   },
 
@@ -20,12 +40,26 @@
     "model": "bestof.entry",
     "pk": 1,
     "fields": {
-      "title": " The Courage to Live Consciously",
+      "title": "The Courage to Live Consciously",
       "url": "http://www.stevepavlina.com/articles/courage-to-live-consciously.htm",
       "description": "Steve signe ici un de ses plus beaux articles.",
       "pub_date":"2013-10-17T08:16:59.844Z",
       "slug":"the-courage-to-live-consciously",
       "category": 2
+
+    }
+  },
+
+  {
+    "model": "bestof.entry",
+    "pk": 2,
+    "fields": {
+      "title": "La semaine de 4 heures",
+      "url": "http://www.amazon.fr/gp/product/2744064173/ref=as_li_ss_tl?ie=UTF8&tag=vincjous-21&linkCode=as2&camp=1642&creative=19458&creativeASIN=2744064173",
+      "description": "Travailler moins pour gagner plus.",
+      "pub_date":"2013-10-17T08:16:59.844Z",
+      "slug":"travailler-moins-pour-gagner-plus",
+      "category": 3
 
     }
   }

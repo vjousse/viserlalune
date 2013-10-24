@@ -13,6 +13,7 @@ class Migration(SchemaMigration):
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=50)),
             ('slug', self.gf('django.db.models.fields.SlugField')(max_length=50)),
+            ('sort', self.gf('django.db.models.fields.IntegerField')()),
         ))
         db.send_create_signal(u'bestof', ['Category'])
 
@@ -42,7 +43,8 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Category'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
-            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50'})
+            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50'}),
+            'sort': ('django.db.models.fields.IntegerField', [], {})
         },
         u'bestof.entry': {
             'Meta': {'object_name': 'Entry'},

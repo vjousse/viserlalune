@@ -4,4 +4,5 @@ from bestof.utils import render
 from bestof.models import Category, Entry
 
 def index(request):
-    return render(request, 'bestof/index.html')
+    categories = Category.objects.all().order_by('sort')
+    return render(request, 'bestof/index.html', {'categories': categories})

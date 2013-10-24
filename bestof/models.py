@@ -3,6 +3,7 @@ from django.db import models
 class Category(models.Model):
     name = models.CharField(max_length=50)
     slug = models.SlugField()
+    sort = models.IntegerField()
 
 class Entry(models.Model):
     title = models.CharField(max_length=250)
