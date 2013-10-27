@@ -10,7 +10,7 @@ Best-of
 
 {% block main %}
 <h1>Le meilleur du web !</h1>
-<p>Je vous propose ici les articles, livres et vidéos qui ont fait une <strong>différence dans ma vie</strong>. Je me dis que s'ils m'ont servis, ils pourront surement vous servir aussi. N'hésitez d'ailleurs pas à m'en proposer d'autres via la <a href="/à-propos">page contact</a>, je serais ravi de découvrir de nouvelles perles !</p>
+<p>Je vous propose ici les articles, livres et vidéos qui ont fait une <strong>différence pour moi</strong>. Je me dis que s'ils m'ont servis, ils pourront surement vous servir aussi. N'hésitez d'ailleurs pas à m'en proposer d'autres via la <a href="/à-propos">page contact</a>, je serais ravi de découvrir de nouvelles perles !</p>
 
 
 {% for category in categories %}
@@ -27,7 +27,7 @@ Best-of
             <div class="panel-body">
                 <ul>
                 {% for entry in category.entry_set.all %}
-                <li><a href="{{entry.url}}">{{ entry.title }}</a> - <span>{{entry.description}}</span></li>
+                <li><a href="{{entry.url}}">{{ entry.title }}</a> - <span>{{entry.description|safe}}</span></li>
                 {% endfor %}
                 </ul>
             </div>

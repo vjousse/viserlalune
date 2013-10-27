@@ -13,7 +13,7 @@ class Migration(SchemaMigration):
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=50)),
             ('slug', self.gf('django.db.models.fields.SlugField')(max_length=50)),
-            ('sort', self.gf('django.db.models.fields.IntegerField')()),
+            ('sort_index', self.gf('django.db.models.fields.IntegerField')()),
         ))
         db.send_create_signal(u'bestof', ['Category'])
 
@@ -26,6 +26,7 @@ class Migration(SchemaMigration):
             ('pub_date', self.gf('django.db.models.fields.DateTimeField')()),
             ('slug', self.gf('django.db.models.fields.SlugField')(max_length=50)),
             ('category', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['bestof.Category'])),
+            ('sort_index', self.gf('django.db.models.fields.IntegerField')()),
         ))
         db.send_create_signal(u'bestof', ['Entry'])
 
@@ -44,7 +45,7 @@ class Migration(SchemaMigration):
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50'}),
-            'sort': ('django.db.models.fields.IntegerField', [], {})
+            'sort_index': ('django.db.models.fields.IntegerField', [], {})
         },
         u'bestof.entry': {
             'Meta': {'object_name': 'Entry'},
@@ -53,6 +54,7 @@ class Migration(SchemaMigration):
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'pub_date': ('django.db.models.fields.DateTimeField', [], {}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50'}),
+            'sort_index': ('django.db.models.fields.IntegerField', [], {}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '250'}),
             'url': ('django.db.models.fields.URLField', [], {'max_length': '200'})
         }

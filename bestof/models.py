@@ -3,7 +3,7 @@ from django.db import models
 class Category(models.Model):
     name = models.CharField(max_length=50)
     slug = models.SlugField()
-    sort = models.IntegerField()
+    sort_index = models.IntegerField()
 
 class Entry(models.Model):
     title = models.CharField(max_length=250)
@@ -12,3 +12,4 @@ class Entry(models.Model):
     pub_date = models.DateTimeField('date published')
     slug = models.SlugField()
     category = models.ForeignKey(Category)
+    sort_index = models.IntegerField()
