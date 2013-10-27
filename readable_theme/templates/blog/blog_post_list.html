@@ -43,116 +43,90 @@
 
 {% block main %}
 
-<div class="row">
-    <div class="col-lg-12">
+<div class="post-list">
 
-        <div class="post-list">
+    <h1>
+    {% if tag or category or year or month or author %}
+        {% block blog_post_list_filterinfo %}
+        {% if tag %}
+            {% trans "Articles taggés avec" %} <strong><em>{{ tag }}</em></strong>
+        {% else %}{% if category %}
+        {% trans "Articles ayant pour catégorie" %} <strong><em>{{ category }}</em></strong>
+        {% else %}{% if year or month %}
+            {% trans "Articles de" %} <strong><em>{% if month %}{{ month }}, {% endif %}
+            {{ year }}</em></strong>
+        {% else %}{% if author %}
+            {% trans "Articles par" %}<strong><em>
+            {{ author.get_full_name|default:author.username }}</em></strong>
+        {% endif %}{% endif %}{% endif %}{% endif %}
+        {% endblock %}
+    {% else %}
+        Tous les articles
+    {% endif %}
+    </h1>
 
-            <h1>
-            {% if tag or category or year or month or author %}
-                {% block blog_post_list_filterinfo %}
-                {% if tag %}
-                    {% trans "Articles taggés avec" %} <strong><em>{{ tag }}</em></strong>
-                {% else %}{% if category %}
-                {% trans "Articles ayant pour catégorie" %} <strong><em>{{ category }}</em></strong>
-                {% else %}{% if year or month %}
-                    {% trans "Articles de" %} <strong><em>{% if month %}{{ month }}, {% endif %}
-                    {{ year }}</em></strong>
-                {% else %}{% if author %}
-                    {% trans "Articles par" %}<strong><em>
-                    {{ author.get_full_name|default:author.username }}</em></strong>
-                {% endif %}{% endif %}{% endif %}{% endif %}
-                {% endblock %}
-            {% else %}
-                Tous les articles
-            {% endif %}
-            </h1>
-
-            <div class="well well-sm">
-                <i class="icon-book" style="color:#D9534F"></i> 
-                
-                    <a href="{% if category %}{% url 'blogebook.views.posts_epub_download' category.slug %}{% else %}{% url 'blogebook.views.posts_epub_download' %}{% endif %}">Télécharger sous forme d'ebook (.epub)</a>
-            </div>
-
-
-
-            {% for blog_post in blog_posts.object_list %}
-                {% with month=blog_post.publish_date|date:"F" year=blog_post.publish_date|date:"Y" %}
-
-            {% ifchanged month or year %}
-            {% if not forloop.first %}
-            </ul>
-            {% endif %}
-            <h3>{{ month|capfirst }} {{ year }}</h3>
-            <ul class="sitemap">
-            {% endifchanged %}
-
-
-                <li>
-                    <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
-                    <small>
-                        <span class="text-muted">
-                            <i class="icon-calendar"></i> {{ blog_post.publish_date|date:"j F Y" }} 
-                            
-                            {% if blog_post.allow_comments %}
-                            ·
-                            <a href="{{ blog_post.get_absolute_url }}#comments">
-                                <i class="icon-comments-alt"></i>
-                                
-                                {% if blog_post.comments_count == 0 %}
-                                    Commenter
-                                {% else %}
-                                    {{ blog_post.comments_count }} commentaire{{ blog_post.comments_count|pluralize }}
-                                {% endif %}
-                            </a>
-                            {% endif %}
-
-                            {% with blog_post.categories.all as categories %}
-                            {% if categories %}
-                            ·
-                            <i class="icon-copy"></i>
-                            {% for current_category in categories %}
-                            {% if category == current_category %}<strong>{% endif %}
-                            <a href="{% url "blog_post_list_category" current_category.slug %}">{{ current_category }}</a>
-                            {% if category == current_category %}</strong>{% endif %}
-                            
-                            {% if not forloop.last %}, {% endif %}
-
-                            {% endfor %}
-                            {% endif %}
-                            {% endwith %}
-                        </span>
-                    </small>
-                </li>
-                {% endwith %}
-            {% endfor %}
-
-            </ul>
-
-        <!-- END post-list -->
-        </div>
-
-    <!-- END col-lg-8 -->
+    <div class="well well-sm">
+        <i class="icon-book" style="color:#D9534F"></i> 
+        
+            <a href="{% if category %}{% url 'blogebook.views.posts_epub_download' category.slug %}{% else %}{% url 'blogebook.views.posts_epub_download' %}{% endif %}">Télécharger sous forme d'ebook (.epub)</a>
     </div>
-    <!--
-    <div class="col-lg-6">
-        <div class="well top-ten">
-            <h2>Les 10 plus populaires</h2>
-            <ul>
-                <li><a href="#">Le courage de vivre consciemment</a></li>
-                <li><a href="#">Que faire de sa vie ?</a></li>
-                <li><a href="#">Comment passer à côté de sa vie : les 8 excuses bidon que vous regretterez</a></li>
-                <li><a href="#">Soyons un peu sérieux, positivons !</a></li>
-                <li><a href="#">J'ai pourtant tout ce qu'il faut pour être heureux !</a></li>
-                <li><a href="#">Comment parler en public : donner un cours ou une conférence</a></li>
-                <li><a href="#">Pourquoi et comment ne pas devenir cadre</a></li>
-                <li><a href="#">J'ai pas le temps, la pire excuse qui soit</a></li>
-                <li><a href="#">Se passer de smartphone et retrouver une vie</a></li>
-                <li><a href="#">Comment choisir sa vie : suivre son instinct</a></li>
-            </ul>
-        </div>
-    </div>
-    -->
+
+
+
+    {% for blog_post in blog_posts.object_list %}
+        {% with month=blog_post.publish_date|date:"F" year=blog_post.publish_date|date:"Y" %}
+
+    {% ifchanged month or year %}
+    {% if not forloop.first %}
+    </ul>
+    {% endif %}
+    <h3>{{ month|capfirst }} {{ year }}</h3>
+    <ul class="sitemap">
+    {% endifchanged %}
+
+
+        <li>
+            <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
+            <small>
+                <span class="text-muted">
+                    <i class="icon-calendar"></i> {{ blog_post.publish_date|date:"j F Y" }} 
+                    
+                    {% if blog_post.allow_comments %}
+                    ·
+                    <a href="{{ blog_post.get_absolute_url }}#comments">
+                        <i class="icon-comments-alt"></i>
+                        
+                        {% if blog_post.comments_count == 0 %}
+                            Commenter
+                        {% else %}
+                            {{ blog_post.comments_count }} commentaire{{ blog_post.comments_count|pluralize }}
+                        {% endif %}
+                    </a>
+                    {% endif %}
+
+                    {% with blog_post.categories.all as categories %}
+                    {% if categories %}
+                    ·
+                    <i class="icon-copy"></i>
+                    {% for current_category in categories %}
+                    {% if category == current_category %}<strong>{% endif %}
+                    <a href="{% url "blog_post_list_category" current_category.slug %}">{{ current_category }}</a>
+                    {% if category == current_category %}</strong>{% endif %}
+                    
+                    {% if not forloop.last %}, {% endif %}
+
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                </span>
+            </small>
+        </li>
+        {% endwith %}
+    {% endfor %}
+
+    </ul>
+
+<!-- END post-list -->
 </div>
 
 
