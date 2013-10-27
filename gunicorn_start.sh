@@ -1,5 +1,8 @@
 #!/bin/bash
  
+export LANG='fr_FR.UTF-8'
+export LC_ALL='fr_FR.UTF-8'
+
 NAME="django_vjousse" # Name of the application
 DJANGODIR=/home/vjousse/django/envs/vjousse_django/ # Django project directory
 SOCKFILE=/home/vjousse/django/envs/vjousse_django/run/gunicorn.sock # we will communicte using this unix socket
