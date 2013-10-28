@@ -15,8 +15,34 @@
     padding-bottom: 15px;
 }
 
+ul.sidebar li {
+   float: none;
+}
 
-.navbar-default .navbar-nav > li.rss > a {
+ul.sidebar li.active {
+   background-color: #F1F1F1;
+}
+
+
+ul.sidebar li.active>a {
+    font-weight: bold;
+}
+
+ul.sidebar>li>a {
+    padding-bottom:10px;
+    padding-top:10px;
+
+    padding-left: 5px;
+}
+
+ul.sidebar.navbar-nav {
+   float: none;
+}
+
+ul.sidebar.nav {
+}
+
+.sidebar > li.rss > a {
     color: #FF6600;
 }
 
@@ -88,8 +114,8 @@ ul.children {
 }
 
 .grey-box {
-    background-color: #F5F5F5;
-    border-radius: 4px;
+    /**background-color: #F5F5F5;**/
+    border-right: 2px solid #E0E0E0;
     list-style: none outside none;
     margin-bottom: 24px;
     padding: 8px 15px;
