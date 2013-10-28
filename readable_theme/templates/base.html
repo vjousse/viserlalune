@@ -12,7 +12,7 @@
     <meta name="author" content="Vincent Jousse" />
 
     <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
-    <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
+    <link rel="shortcut icon" href="{% static "favicon.ico" %}">
 
     {% ifinstalled mezzanine.blog %}
     <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "sitecontent.views.blog_post_feed_richtext_filters" "rss" %}">
