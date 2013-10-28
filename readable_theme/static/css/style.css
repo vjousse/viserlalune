@@ -1,7 +1,19 @@
 #body{
-    padding-top: 80px;
     font-size: 19px;
     line-height: 30px;
+}
+
+
+@media (min-width: 768px) {
+
+    #body{
+        padding-top: 50px;
+    }
+
+
+    .container .navbar-collapse {
+        padding-left: 0px;
+    }
 }
 
 .container h1 {
@@ -15,17 +27,19 @@
     padding-bottom: 15px;
 }
 
+
 ul.sidebar li {
    float: none;
 }
 
 ul.sidebar li.active {
    background-color: #F1F1F1;
+   border-radius: 4px;
 }
 
 
 ul.sidebar li.active>a {
-    font-weight: bold;
+    border-radius: 4px;
 }
 
 ul.sidebar>li>a {
@@ -39,10 +53,18 @@ ul.sidebar.navbar-nav {
    float: none;
 }
 
-ul.sidebar.nav {
+.container .row .navbar-default {
+    border: none;
+    box-shadow: none;
 }
 
-.sidebar > li.rss > a {
+
+.container .row .navbar-default ul > li > a {
+    color: #428BCA;
+}
+
+
+.container .row .navbar-default ul > li.rss > a {
     color: #FF6600;
 }
 
