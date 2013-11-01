@@ -25,101 +25,93 @@
 
 
 
-<div class="row">
-    <div class="col-lg-12">
-
-        <header>
-            <h1>{{ blog_post.title }}</h1>
-        </header>
+<header>
+    <h1>{{ blog_post.title }}</h1>
+</header>
 
 
-        <article class="entry post-single clearfix">
+<article class="entry post-single clearfix">
 
 
-            <div class="entry_content">
+    <div class="entry_content">
 
-                {{ blog_post.content|richtext_filters|safe }}
+        {{ blog_post.content|richtext_filters|safe }}
 
-                <footer class="well well-meta">
+        <footer class="well well-meta">
 
-                    <ul class="entry_meta clearfix list-inline text-muted">
+            <ul class="entry_meta clearfix list-inline text-muted">
 
-                        <li><i class="icon-calendar"></i> Publié le <time pubdate="pubdate" datetime="{{ blog_post.publish_date|date:"Y-m-d" }}">{{ blog_post.publish_date|date:"j F Y" }}</time></li>
-                        <li><i class="icon-user"></i> par {{ blog_post.user.get_full_name|default:blog_post.user.username }}</li>
-                        <li><i class="icon-copy"></i>
-                        
-                        {% with blog_post.categories.all as categories %}
-                        {% if categories %}
-                        dans
-                        {% for category in categories %}
-                        <a href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
-                        {% endfor %}
-                        {% endif %}
-                        {% endwith %}
-
-                    </ul>
-
-
-                    <span><strong>Partagez cet article :</strong></span>
-
-                    <a href="http://facebook.com/sharer.php?u={{ request.build_absolute_uri }}&amp;t={{ blog_post.title|urlencode }}" class="ntip" style="color: #3b5998" title="Partager sur Facebook"><i class="icon-facebook-sign"></i> Facebook</a> — 
-                    <a href="http://twitter.com/home/?status={{ blog_post.title }} - {{ request.build_absolute_uri }} via @vjousse " class="ntip" style="color: #4099FF" title="Tweet on Twitter"><i class="icon-twitter-sign"></i> Twitter</a> — 
-                    <a href="https://plus.google.com/share?url={{ request.build_absolute_uri }}" onclick="javascript:window.open(this.href,
-                        '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false; " class="ntip" style="color: #b63324;" title="Partager sur Google Plus"><i class="icon-google-plus-sign"></i> Google +</a>
-
-                </footer>
-
-            </div>
-            
-            {% block blog_post_previous_next %}
-            <ul class="pager nobottommargin">
-            {% with blog_post.get_previous_by_publish_date as previous %}
-            {% if previous %}
-            <li class="previous">
-                <a href="{{ previous.get_absolute_url }}">&larr; {{ previous }}</a>
-            </li>
-            {% endif %}
-            {% endwith %}
-            {% with blog_post.get_next_by_publish_date as next %}
-            {% if next %}
-            <li class="next">
-                <a href="{{ next.get_absolute_url }}">{{ next }} &rarr;</a>
-            </li>
-            {% endif %}
-            {% endwith %}
-            </ul>
-            {% endblock %}
-
-
-            {% if blog_post.related_posts.all %}
-
-            <div style="position: relative;">
-
-                <h4><span>Articles</span> en rapport</h4>
-                <ul class="unstyled">
-                {% for post in blog_post.related_posts.all %}
-                    <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+                <li><i class="icon-calendar"></i> Publié le <time pubdate="pubdate" datetime="{{ blog_post.publish_date|date:"Y-m-d" }}">{{ blog_post.publish_date|date:"j F Y" }}</time></li>
+                <li><i class="icon-user"></i> par {{ blog_post.user.get_full_name|default:blog_post.user.username }}</li>
+                <li><i class="icon-copy"></i>
+                
+                {% with blog_post.categories.all as categories %}
+                {% if categories %}
+                dans
+                {% for category in categories %}
+                <a href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
                 {% endfor %}
-                </ul>
-            </div>
+                {% endif %}
+                {% endwith %}
 
-            {% endif %}
-
-
-            {% block blog_post_detail_comments %}
-            {% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
-            {% endblock %}
+            </ul>
 
 
+            <span><strong>Partagez cet article :</strong></span>
+
+            <a href="http://facebook.com/sharer.php?u={{ request.build_absolute_uri }}&amp;t={{ blog_post.title|urlencode }}" class="ntip" style="color: #3b5998" title="Partager sur Facebook"><i class="icon-facebook-sign"></i> Facebook</a> — 
+            <a href="http://twitter.com/home/?status={{ blog_post.title }} - {{ request.build_absolute_uri }} via @vjousse " class="ntip" style="color: #4099FF" title="Tweet on Twitter"><i class="icon-twitter-sign"></i> Twitter</a> — 
+            <a href="https://plus.google.com/share?url={{ request.build_absolute_uri }}" onclick="javascript:window.open(this.href,
+                '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false; " class="ntip" style="color: #b63324;" title="Partager sur Google Plus"><i class="icon-google-plus-sign"></i> Google +</a>
+
+        </footer>
+
+    </div>
+    
+    {% block blog_post_previous_next %}
+    <ul class="pager nobottommargin">
+    {% with blog_post.get_previous_by_publish_date as previous %}
+    {% if previous %}
+    <li class="previous">
+        <a href="{{ previous.get_absolute_url }}">&larr; {{ previous }}</a>
+    </li>
+    {% endif %}
+    {% endwith %}
+    {% with blog_post.get_next_by_publish_date as next %}
+    {% if next %}
+    <li class="next">
+        <a href="{{ next.get_absolute_url }}">{{ next }} &rarr;</a>
+    </li>
+    {% endif %}
+    {% endwith %}
+    </ul>
+    {% endblock %}
 
 
-        <!-- END entry-content -->
-        </article>
+    {% if blog_post.related_posts.all %}
 
-    <!-- END col-lg-12 -->
+    <div style="position: relative;">
+
+        <h4><span>Articles</span> en rapport</h4>
+        <ul class="unstyled">
+        {% for post in blog_post.related_posts.all %}
+            <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+        {% endfor %}
+        </ul>
     </div>
 
-</div>
+    {% endif %}
+
+
+    {% block blog_post_detail_comments %}
+    {% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
+    {% endblock %}
+
+
+
+
+<!-- END entry-content -->
+</article>
 
 
 {% endblock %}

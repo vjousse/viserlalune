@@ -1,3 +1,5 @@
-pip install django mezzanine gunicorn setproctitle django-widget-tweaks
+[Mezzanine](http://mezzanine.jupo.org/) based website.
 
-http://michal.karzynski.pl/blog/2013/06/09/django-nginx-gunicorn-virtualenv-supervisor/
+# Installation
+
+I'm using the installation described here: http://michal.karzynski.pl/blog/2013/06/09/django-nginx-gunicorn-virtualenv-supervisor/

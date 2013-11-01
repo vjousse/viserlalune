@@ -2,7 +2,11 @@
 {% spaceless %}
 {% if page_branch_in_menu %}
 
-<ul class="nav navbar-nav">
+<ul class="nav navbar-nav sidebar">
+
+    <li{% if on_home %} class="active"{% endif %}>
+    <a href="{% url "home" %}">Accueil</a>
+    </li>
 
     {% for page in page_branch %}
 

@@ -12,7 +12,7 @@
     <meta name="author" content="Vincent Jousse" />
 
     <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
-    <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
+    <link rel="shortcut icon" href="{% static "favicon.ico" %}">
 
     {% ifinstalled mezzanine.blog %}
     <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "sitecontent.views.blog_post_feed_richtext_filters" "rss" %}">
@@ -37,8 +37,8 @@
 
 </head>
 <body id="{% block body_id %}body{% endblock %}">
-
-    <div class="navbar navbar-default navbar-fixed-top">
+<!--
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
 
         <div class="navbar-header">
@@ -55,7 +55,11 @@
             {% page_menu "pages/menus/dropdown.html" %}
 
             <form action="http://devorigin.us2.list-manage1.com/subscribe/post?u=0670d470b317c4c1e145e8a7a&amp;id=de4b63da2c" class="navbar-form navbar-right" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" role="form" novalidate>
+            -->
+
                 <!-- Hardcode size to fix this bug: https://github.com/twbs/bootstrap/issues/9950 -->
+
+                <!--
                 <div class="input-group" style="width: 270px;">
                     <span class="input-group-addon"><i class="icon-envelope"></i></span>
                     <input name="EMAIL" class="form-control" type="text" placeholder="Votre email">
@@ -69,6 +73,7 @@
 
       </div>
     </div>
+    -->
 
     <div class="container">
         {% nevercache %}
@@ -80,18 +85,37 @@
         {% endnevercache %}
 
 
-        <nav>
-            <ul class="breadcrumb">
-            {% spaceless %}
-            {% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
-            {% endspaceless %}
-            </ul>
-        </nav>
 
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2 grey-box text-left navbar navbar-default" style="margin-top: 20px;">
 
-        {% block main %}
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
 
-        {% endblock %}
+                <nav class="navbar-collapse collapse" id="navbar-main">
+                    {% page_menu "pages/menus/dropdown.html" %}
+                </nav>
+            </div>
+            <div class="col-lg-8 col-md-10 col-sm-10">
+                <!--
+                <nav>
+                    <ul class="breadcrumb">
+                    {% spaceless %}
+                    {% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
+                    {% endspaceless %}
+                    </ul>
+                </nav>
+                -->
+
+                {% block main %}
+
+                {% endblock %}
+            </div>
+        </div>
+
     </div>
 
 
