@@ -68,8 +68,16 @@ ul.sidebar.navbar-nav {
 }
 
 
-.container .row .navbar-default ul > li.rss > a {
+.container .row .navbar-default ul > li > a.rss {
     color: #FF6600;
+}
+
+.container .row .navbar-default ul > li > a.newsletter {
+    color: #000000;
+}
+
+.nav > li.subscribe > a {
+    display: inline;
 }
 
 .sitemap span {
