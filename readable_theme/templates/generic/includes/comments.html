@@ -1,5 +1,15 @@
 {% load i18n mezzanine_tags comment_tags %}
 
+<div id="displaycomments" class="well well-sm clearfix">
+{% if object_for_comments.comments_count > 0 %}
+    <span>{{ object_for_comments.comments_count }}</span> Commentaire{{ object_for_comments.comments_count|pluralize }} — <a class="comments-toggle" href="#comments">Participer à la discussion</a>
+{% else %}
+    Aucun commentaire — <a class="comments-toggle" href="#comments">Commenter</a>
+
+{% endif %}
+
+</div>
+
 <div id="comments" class="well clearfix">
 
 {% if object_for_comments.comments_count > 0 %}

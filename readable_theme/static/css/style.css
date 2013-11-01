@@ -114,9 +114,17 @@ ul.sidebar.navbar-nav {
     margin-top: 40px;
 }
 
+article {
+    padding-bottom: 50px;
+}
+
 .input_id_honeypot {display:none !important;}
 
 /* Comments */
+
+#comments {
+    display: none;
+}
 
 ol.commentlist {
     list-style-type: none;
@@ -153,4 +161,8 @@ ul.children {
     list-style: none outside none;
     margin-bottom: 24px;
     padding: 8px 15px;
+}
+
+.post-footer {
+    font-size: 17px;
 }

@@ -8,7 +8,7 @@
         {% if not comment.is_removed and comment.is_public %}
         <div id="comment-{{ comment.id }}" class="comment-wrap clearfix">
 
-            <div class="comment-meta col-lg-1">
+            <div class="comment-meta col-md-2">
                 <div class="comment-author vcard">
                     <span class="comment-avatar clearfix">
                         {% if comment.url %}
@@ -23,7 +23,7 @@
                 </div>
             </div>
 
-            <div class="comment-content clearfix col-lg-11">
+            <div class="comment-content clearfix col-md-10">
                 <div class="comment-author">
                     <strong>
                     {% if comment.url %}

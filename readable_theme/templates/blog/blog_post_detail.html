@@ -37,7 +37,7 @@
 
         {{ blog_post.content|richtext_filters|safe }}
 
-        <footer class="well well-meta">
+        <footer class="well well-meta post-footer">
 
             <ul class="entry_meta clearfix list-inline text-muted">
 
@@ -68,6 +68,7 @@
 
     </div>
     
+    <!--
     {% block blog_post_previous_next %}
     <ul class="pager nobottommargin">
     {% with blog_post.get_previous_by_publish_date as previous %}
@@ -86,6 +87,7 @@
     {% endwith %}
     </ul>
     {% endblock %}
+    -->
 
 
     {% if blog_post.related_posts.all %}
