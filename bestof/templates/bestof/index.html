@@ -14,25 +14,23 @@ Best-of
 
 
 {% for category in categories %}
-    {% if forloop.counter|divisibleby:"3" and forloop.counter != 1 %}
-    </div>
-    {% endif %}
-    {% if forloop.counter|divisibleby:"3" or forloop.counter == 1 %}
+    {% if category.entry_set.all.count != 0 %}
     <div class="row">
-    {% endif %}
 
-    <div class="col-lg-6">
-        <div class="panel panel-default">
-            <div class="panel-heading"><h4>{{ category.name }}</h4></div>
-            <div class="panel-body">
-                <ul>
-                {% for entry in category.entry_set.all %}
-                <li><a href="{{entry.url}}">{{ entry.title }}</a> - <span>{{entry.description|safe}}</span></li>
-                {% endfor %}
-                </ul>
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4>{{ category.name }}</h4></div>
+                <div class="panel-body">
+                    <ul class="entries">
+                    {% for entry in category.entry_set.all %}
+                    <li><a href="{{entry.url}}"><strong>{{ entry.title }}</strong></a> - <span>{{entry.description|safe}}</span></li>
+                    {% endfor %}
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
+    {% endif %}
 {% endfor %}
 
 {% endblock %}
