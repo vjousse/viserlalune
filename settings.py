@@ -10,6 +10,8 @@
 # of settings Mezzanine implements:
 # http://mezzanine.jupo.org/docs/configuration.html#default-settings
 
+SLUGIFY = 'django.template.defaultfilters.slugify'
+
 # Controls the ordering and grouping of the admin menu.
 #
 # ADMIN_MENU_ORDER = (
