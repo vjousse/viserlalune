@@ -25,3 +25,19 @@ def posts_epub_download(request, category=None):
 
 
     return response
+
+
+
+def post_epub_download(request, aSlug=None):
+    """
+    Construct an ebook using one blog post.
+    """
+    blog_posts = BlogPost.objects.published(
+                                     for_user=request.user).filter(slug=aSlug).select_related()
+
+    content = epub.generate_from_posts(blog_posts)
+    response = HttpResponse(content, mimetype='appication/epub+zip')
+    response['Content-Disposition'] = "attachment; filename=vincent-jousse-articles-%s.epub" % aSlug
+
+
+    return response
