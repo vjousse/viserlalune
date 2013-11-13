@@ -10,6 +10,10 @@
     <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
     <meta name="description" content="{% block meta_description %}{% endblock %}">
     <meta name="author" content="Vincent Jousse" />
+    <meta property="og:title" content="{% block og_title %}{{ page.title }}{% endblock %}" />
+    <meta property="og:description" content="{% block og_description %}{{ page.description }}{% endblock %}" />
+    <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+    <meta property="og:image" content="{% static "images/deboutlesgens.png" %}" />
 
     <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
     <link rel="shortcut icon" href="{% static "favicon.ico" %}">

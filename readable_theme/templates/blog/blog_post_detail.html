@@ -2,6 +2,7 @@
 {% load mezzanine_tags comment_tags keyword_tags rating_tags i18n future staticfiles %}
 
 {% block meta_title %}{{ blog_post.meta_title }}{% endblock %}
+{% block og_title %}{{ blog_post.meta_title }}{% endblock %}
 
 {% block meta_keywords %}{% metablock %}
 {% keywords_for blog_post as tags %}
@@ -9,6 +10,10 @@
 {% endmetablock %}{% endblock %}
 
 {% block meta_description %}{% metablock %}
+{{ blog_post.description }}
+{% endmetablock %}{% endblock %}
+
+{% block og_description %}{% metablock %}
 {{ blog_post.description }}
 {% endmetablock %}{% endblock %}
 
