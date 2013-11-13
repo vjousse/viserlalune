@@ -75,6 +75,10 @@ ul.sidebar.navbar-nav {
     color: #FF6600;
 }
 
+.container .row .navbar-default ul > li > a.twitter {
+    color: #4099FF;
+}
+
 .container .row .navbar-default ul > li > a.newsletter {
     color: #000000;
 }

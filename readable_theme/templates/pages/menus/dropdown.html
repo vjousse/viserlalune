@@ -22,7 +22,7 @@
     {% endfor %}
 
     {% ifinstalled mezzanine.blog %}
-    <li class="subscribe"><a class="rss" href="{% url "sitecontent.views.blog_post_feed_richtext_filters" "atom" %}"><i class="icon-rss"></i></a> <a class="newsletter" href="http://eepurl.com/HoMGT" target="_blank"><i class="icon-envelope"></i></a></li>
+    <li class="subscribe"><a class="rss" href="{% url "sitecontent.views.blog_post_feed_richtext_filters" "atom" %}"><i class="icon-rss"></i></a> <a class="twitter" href="http://twitter.com/vjousse"><i class="icon-twitter"></i></a> <a class="newsletter" href="http://eepurl.com/HoMGT" target="_blank"><i class="icon-envelope"></i></a></li>
     {% endifinstalled %}
 
 </ul>
