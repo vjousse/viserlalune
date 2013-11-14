@@ -5,6 +5,17 @@
 
 header .ebook {
     padding-bottom: 10px;
+    font-style: italic;
+    font-size: 17px;
+    padding-bottom: 20px;
+}
+header .time {
+    font-size: 17px;
+    font-style: italic;
+}
+
+header.article h1 {
+    padding-bottom: 15px;
 }
 
 @media (min-width: 768px) {
@@ -24,7 +35,7 @@ ul.entries li {
 }
 
 .container h1 {
-    font-size: 36px;
+    font-size: 42px;
     padding-bottom: 20px;
 }
 
@@ -158,8 +169,19 @@ ul.children {
     padding-bottom: 20px;
 }
 
+.container blockquote .lead {
+    font-size: 19px;
+}
+
+
+.container blockquote {
+    padding-right: 0;
+    padding-left: 0;
+    border:0px;
+}
+
 .container .lead {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .grey-box {

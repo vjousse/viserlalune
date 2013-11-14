@@ -30,10 +30,13 @@
 
 
 
-<header>
-    <h1>{{ blog_post.title }}</h1>
+<header class="article">
+    <h1 class="text-center">{{ blog_post.title }}</h1>
 
-    <div class="ebook">
+    <div class="time text-center">
+        Temps de lecture indicatif : <strong>{% widthratio blog_post.content|wordcount 300 1 %} minutes</strong>.
+    </div>
+    <div class="ebook text-center">
         <i class="icon-book" style="color:#D9534F"></i> 
             <a href="{% url 'blogebook.views.post_epub_download' blog_post.slug %}">Télécharger sous forme d'ebook (.epub)</a>
     </div>
@@ -51,13 +54,12 @@
 
             <ul class="entry_meta clearfix list-inline text-muted">
 
-                <li><i class="icon-calendar"></i> Publié le <time pubdate="pubdate" datetime="{{ blog_post.publish_date|date:"Y-m-d" }}">{{ blog_post.publish_date|date:"j F Y" }}</time></li>
-                <li><i class="icon-user"></i> par {{ blog_post.user.get_full_name|default:blog_post.user.username }}</li>
+                <li><i class="icon-calendar"></i> <time pubdate="pubdate" datetime="{{ blog_post.publish_date|date:"Y-m-d" }}">{{ blog_post.publish_date|date:"j F Y" }}</time></li>
+                <li><i class="icon-user"></i> {{ blog_post.user.get_full_name|default:blog_post.user.username }}</li>
                 <li><i class="icon-copy"></i>
                 
                 {% with blog_post.categories.all as categories %}
                 {% if categories %}
-                dans
                 {% for category in categories %}
                 <a href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
                 {% endfor %}
@@ -79,8 +81,6 @@
                     '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false; " class="ntip" style="color: #b63324;" title="Partager sur Google Plus"><i class="icon-google-plus-sign"></i> Google +</a>
             </div>
             <div>
-                <span><strong>Télécharger :</strong></span> <i class="icon-book" style="color:#D9534F"></i> <a href="{% url 'blogebook.views.post_epub_download' blog_post.slug %}">Télécharger sous forme d'ebook (.epub)</a>
-
 
             <div id="displaycomments">
             {% if blog_post.comments_count > 0 %}
