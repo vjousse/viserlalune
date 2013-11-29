@@ -51,7 +51,7 @@
         {{ blog_post.content|richtext_filters|safe }}
 
         <hr />
-        <em style="font-size: 16px;">J'espère que cet article a été à la hauteur du temps que vous lui avez consacré. Je suis persuadé que chaque personne a quelque chose à offrir aux autres. Vous y compris. Si vous en avez le temps et l'envie, n'hésitez pas à donner à votre tour. Vous pouvez par exemple : <ul>
+        <div style="font-size: 16px;font-style:italic;">J'espère que cet article a été à la hauteur du temps que vous lui avez consacré. Je suis persuadé que chaque personne a quelque chose à offrir aux autres. Vous y compris. Si vous en avez le temps et l'envie, n'hésitez pas à donner à votre tour. Vous pouvez par exemple : <ul>
                 <li><strong>partager sur les réseaux sociaux</strong> : 
                 <a href="http://facebook.com/sharer.php?u={{ request.build_absolute_uri }}&amp;t={{ blog_post.title|urlencode }}" class="ntip" style="color: #3b5998" title="Partager sur Facebook"><i class="icon-facebook-sign"></i> Facebook</a> — 
                 <a href="http://twitter.com/home/?status={{ blog_post.title }} - {{ request.build_absolute_uri }} via @vjousse " class="ntip" style="color: #4099FF" title="Tweet on Twitter"><i class="icon-twitter-sign"></i> Twitter</a> — 
@@ -67,7 +67,11 @@
 
             Quoiqu'il en soit, <strong>j'ai été heureux de vous offrir</strong> cet article. Au plaisir !
             
-            </em>
+            </div>
+            <hr />
+            <div class="text-center show-articles">
+                <a href="/blog/">Retour à la liste des articles</a>
+            </div>
 
         <footer class="well well-meta post-footer">
 

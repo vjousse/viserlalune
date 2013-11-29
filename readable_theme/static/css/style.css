@@ -18,28 +18,75 @@ header.article h1 {
     padding-bottom: 15px;
 }
 
-@media (min-width: 768px) {
+.container .header a {
+    color: #DDDDDD;
+}
 
-    #body{
-        padding-top: 50px;
-    }
+.container .header {
+    padding-bottom: 30px;
+    color: #DDDDDD;
+}
+
+.container .header .input-group-addon:hover {
+    color: #333333;
+
+    -webkit-transition: color 1000ms linear;
+    -moz-transition: color 1000ms linear;
+    -o-transition: color 1000ms linear;
+    -ms-transition: color 1000ms linear;
+    transition: color 1000ms linear;
+}
 
 
-    .container .navbar-collapse {
-        padding-left: 0px;
-    }
+.container .header .btn-default {
+    background-image: none;
+    background-color: #DDDDDD;
+    border: 1px solid #D9D9D9;
+}
+
+
+.container .header .btn-default:hover {
+    background-image: none;
+    background-color: #222222;
+    border: 1px solid #1A1A1A;
+    -webkit-transition: background-color 1000ms linear;
+    -moz-transition: background-color 1000ms linear;
+    -o-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    transition: background-color 1000ms linear;
+}
+
+.container .header h2 {
+    padding-top: 12px;
+    margin-top: 0px;
+}
+
+
+.container .header h2 a:hover {
+    color: #333333;
+
+    -webkit-transition: color 1000ms linear;
+    -moz-transition: color 1000ms linear;
+    -o-transition: color 1000ms linear;
+    -ms-transition: color 1000ms linear;
+    transition: color 1000ms linear;
+}
+
+.container .newsletter-form {
+    padding-top: 15px;
+    margin-top: 0px;
 }
 
 ul.entries li {
     padding-bottom: 20px;
 }
 
-.container h1 {
+.container .entry h1 {
     font-size: 42px;
     padding-bottom: 20px;
 }
 
-.container h2 {
+.container .entry h2 {
     font-size: 30px;
     padding-top: 20px;
     padding-bottom: 15px;
@@ -170,7 +217,7 @@ ul.children {
 }
 
 .container blockquote .lead {
-    font-size: 19px;
+    font-size: 28px;
 }
 
 
@@ -182,6 +229,19 @@ ul.children {
 
 .container .lead {
     font-size: 18px;
+}
+
+.container .home-links {
+    padding-bottom: 20px;
+}
+
+.container .home-links p a {
+    color: #333333;
+}
+
+.show-articles {
+    padding-top: 15px;
+    font-size: 25px;
 }
 
 .grey-box {
