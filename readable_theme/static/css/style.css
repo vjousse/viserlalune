@@ -77,6 +77,20 @@ header.article h1 {
     margin-top: 0px;
 }
 
+@media (max-width: 767px) {
+
+    .container .newsletter-form {
+        display: none;
+    }
+
+    .container .header h2 {
+        text-align: center;
+    }
+    .container .header {
+        padding-bottom: 15px;
+    }
+}
+
 ul.entries li {
     padding-bottom: 20px;
 }
