@@ -51,7 +51,7 @@
 
 <div class="post-list">
 
-    <h1 class="text-center">
+    <h1>
     {% if tag or category or year or month or author %}
         {% block blog_post_list_filterinfo %}
         {% if tag %}
@@ -72,7 +72,7 @@
     </h1>
 
     <div>
-        <i class="icon-book" style="color:#D9534F"></i> 
+        <i class="fa fa-book" style="color:#D9534F"></i> 
         
             <a href="{% if category %}{% url 'blogebook.views.posts_epub_download' category.slug %}{% else %}{% url 'blogebook.views.posts_epub_download' %}{% endif %}">Télécharger sous forme d'ebook (.epub)</a>
     </div>

@@ -1,6 +1,6 @@
 #body{
-    font-size: 19px;
-    line-height: 30px;
+    font-size: 17px;
+    line-height: 27px;
 }
 
 header .ebook {
@@ -14,16 +14,18 @@ header .time {
     font-style: italic;
 }
 
-header.article h1 {
-    padding-bottom: 15px;
+.container h1 {
+    padding-top: 45px;
+    padding-bottom: 40px;
+    margin-top: 0px;
 }
 
 .container .header a {
-    color: #DDDDDD;
+    color: #E2E2E2;
 }
 
 .container .header {
-    padding-bottom: 30px;
+    padding-bottom: 0px;
     color: #DDDDDD;
 }
 
@@ -59,11 +61,13 @@ header.article h1 {
 .container .header h2 {
     padding-top: 12px;
     margin-top: 0px;
+    font-size: 24px;
 }
 
 
 .container .header h2 a:hover {
     color: #333333;
+    text-decoration: none;
 
     -webkit-transition: color 1000ms linear;
     -moz-transition: color 1000ms linear;
@@ -132,6 +136,11 @@ ul.sidebar.navbar-nav {
    float: none;
 }
 
+
+#site-title {
+    text-align: center;
+}
+
 .container .row .navbar-default {
     border: none;
     box-shadow: none;
@@ -170,15 +179,16 @@ ul.sidebar.navbar-nav {
 }
 
 .sitemap a {
-    font-size: 20px;
 }
 
-.post-list h1 {
-    padding-bottom: 20px;
+.post-list h3 {
+    font-size: 25px;
 }
 
 .entry_meta ul {
     list-style: none outside none;
+    padding:0;
+    margin: 0;
 }
 
 .btn-submit {
@@ -273,3 +283,15 @@ ul.children {
 #google {
     display: none;
 }
+
+.container .side-left {
+    font-size: 12px;
+    margin-top: 45px;
+}
+
+.container .side-right {
+    text-align: right;
+    margin-top: 45px;
+    border-right: 1px solid gray;
+}
+

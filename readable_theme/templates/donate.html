@@ -1,0 +1,31 @@
+
+        <hr />
+        <div style="font-size: 16px;font-style:italic;">J'espère que cet article a été à la hauteur du temps que vous lui avez consacré. Je suis persuadé que chaque personne a quelque chose à offrir aux autres. Vous y compris. Si vous en avez le temps et l'envie, n'hésitez pas à donner à votre tour. Vous pouvez par exemple : <ul>
+                <li><strong>partager sur les réseaux sociaux</strong> :
+                <a href="http://facebook.com/sharer.php?u={{ request.build_absolute_uri }}&amp;t={{ blog_post.title|urlencode }}" class="ntip" style="color: #3b5998" title="Partager sur Facebook"><i class="icon-facebook-sign"></i> Facebook</a> — 
+                <a href="http://twitter.com/home/?status={{ blog_post.title|urlencode }}%20-%20{{ request.build_absolute_uri }}%20via%20@vjousse" class="ntip" style="color: #4099FF" title="Tweet on Twitter"><i class="icon-twitter-sign"></i> Twitter</a> — 
+                <a href="https://plus.google.com/share?url={{ request.build_absolute_uri }}" onclick="javascript:window.open(this.href,
+                    '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false; " class="ntip" style="color: #b63324;" title="Partager sur Google Plus"><i class="icon-google-plus-sign"></i> Google +</a>
+
+                </li>
+                <li><strong>me soutenir sur <a href="https://flattr.com/profile/vjousse">Flattr</a></strong> : <script id='fb17wor'>(function(i){var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='//api.flattr.com/button/view/?uid=vjousse&button=compact&url='+encodeURIComponent(document.URL);f.title='Flattr';f.height=20;f.width=110;f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('fb17wor');</script>
+                </li>
+                <li>m'envoyer des <strong>Bitcoins</strong> : 1Ngx95Fk1YFPX5PhBwxPHXErrd5nPE9iFG</li>
+                <li>m'envoyer un petit <strong>merci</strong> <a href="mailto:vincent@jousse.org">par mail</a> ou par <a href="http://twitter.com/vjousse">Twitter</a></li>
+            </ul>
+
+            Quoiqu'il en soit, <strong>j'ai été heureux de vous offrir</strong> cet article. Au plaisir !
+
+            </div>
+
+
+            <div>
+
+            <div id="displaycomments">
+            {% if blog_post.comments_count > 0 %}
+                <span><strong>{{ blog_post.comments_count }}</strong></span> Commentaire{{ blog_post.comments_count|pluralize }} — <a class="comments-toggle" href="#comments">Participer à la discussion</a>
+            {% else %}
+                Aucun commentaire — <a class="comments-toggle" href="#comments">Commenter</a>
+            {% endif %}
+
+            </div>

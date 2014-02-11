@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ LANGUAGE_CODE }}">
+<html lang="fr">
 {% load pages_tags mezzanine_tags i18n future staticfiles %}
 <head>
 
@@ -24,8 +24,8 @@
     {% endifinstalled %}
     {% compress css %}
     <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css" />
-    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}" type="text/css" />
     <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}" type="text/css" />
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}" type="text/css" />
 
     {% block extra_css %}{% endblock %}
     {% endcompress %}
@@ -51,30 +51,14 @@
         {% endfor %}
         {% endnevercache %}
 
-
-
-        <div class="row header">
-            <div class="col-lg-offset-2 col-lg-4 col-sm-6">
-                <h2><a href="{% url "home" %}" class="navbar-brand"><i class="icon-male"></i> Debout les gens !</a></h2>
-            </div>
-  <div class="clearfix visible-xs"></div>
-            <div class="col-lg-4 col-sm-6 newsletter-form">
-                <form action="http://devorigin.us2.list-manage1.com/subscribe/post?u=0670d470b317c4c1e145e8a7a&amp;id=de4b63da2c" class="navbar-form navbar-right" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" role="form" novalidate>
-
-                    <!-- Hardcode size to fix this bug: https://github.com/twbs/bootstrap/issues/9950 -->
-
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="icon-envelope"></i></span>
-                        <input name="EMAIL" class="form-control" type="text" placeholder="Votre email">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="submit">S'abonner</button>
-                        </span>
-                    </div>
-                </form>
-            </div>
-        </div>
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-sm-10">
+
+            <div class="col-lg-2 col-md-2 col-sm-2 side-left">
+                {% block side %}
+
+                {% endblock %}
+            </div>
+            <div class="col-lg-8 col-md-10 col-sm-10">
                 <!--
                 <nav>
                     <ul class="breadcrumb">
@@ -89,7 +73,17 @@
 
                 {% endblock %}
             </div>
-        </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 side-right">
+                <ul class="list-unstyled">
+                    <li><i class="fa fa-male"></i> Debout les gens !</li>
+                    <li><a href="{% url "home" %}">Articles</a></li>
+                    <li><a href="/bestof/">Favoris</a></li>
+                    <li><a href="/à-propos/">S'abonner</a></li>
+                    <li><a href="/à-propos/">À propos</a></li>
+                </ul>
+            </div>
+
+
         <div id="google"><a href="https://plus.google.com/+VincentJousse?rel=author">Google+</a></div>
 
     </div>
