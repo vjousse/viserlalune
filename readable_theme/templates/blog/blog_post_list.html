@@ -74,7 +74,8 @@
     <div>
         <i class="fa fa-book" style="color:#D9534F"></i> 
         
-            <a href="{% if category %}{% url 'blogebook.views.posts_epub_download' category.slug %}{% else %}{% url 'blogebook.views.posts_epub_download' %}{% endif %}">Télécharger sous forme d'ebook (.epub)</a>
+
+        <a href="{% if category %}{% url 'blogebook.views.posts_epub_download' category.slug %}{% else %}{% url 'blogebook.views.posts_epub_download' %}{% endif %}">Télécharger les {{ blog_posts|length }} articles sous forme d'ebook (.epub)</a>
     </div>
 
 
@@ -92,7 +93,27 @@
 
 
         <li>
-            <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a> 
+            <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
+            <small>
+                <span class="text-muted">
+                    {% spaceless %}
+                    {% with blog_post.categories.all as categories %}
+                    {% if categories %}
+                    <i class="fa fa-copy"></i>&nbsp;
+                    {% for current_category in categories %}
+                    {% if category == current_category %}<strong>{% endif %}
+                    <a href="{% url "blog_post_list_category" current_category.slug %}">{{ current_category }}</a>
+                    {% if category == current_category %}</strong>{% endif %}
+                    
+                    {% if not forloop.last %}, {% endif %}
+
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+
+                    {% endspaceless %}
+                </span>
+            </small>
         </li>
         {% endwith %}
     {% endfor %}
