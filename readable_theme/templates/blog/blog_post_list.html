@@ -92,41 +92,7 @@
 
 
         <li>
-            <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
-            <small>
-                <span class="text-muted">
-                    <i class="icon-calendar"></i> {{ blog_post.publish_date|date:"j F Y" }} 
-                    <!--
-                    {% if blog_post.allow_comments %}
-                    ·
-                    <a href="{{ blog_post.get_absolute_url }}#displaycomments">
-                        <i class="icon-comments-alt"></i>
-                        
-                        {% if blog_post.comments_count == 0 %}
-                            Commenter
-                        {% else %}
-                            {{ blog_post.comments_count }} commentaire{{ blog_post.comments_count|pluralize }}
-                        {% endif %}
-                    </a>
-                    {% endif %}
-                    -->
-
-                    {% with blog_post.categories.all as categories %}
-                    {% if categories %}
-                    ·
-                    <i class="icon-copy"></i>
-                    {% for current_category in categories %}
-                    {% if category == current_category %}<strong>{% endif %}
-                    <a href="{% url "blog_post_list_category" current_category.slug %}">{{ current_category }}</a>
-                    {% if category == current_category %}</strong>{% endif %}
-                    
-                    {% if not forloop.last %}, {% endif %}
-
-                    {% endfor %}
-                    {% endif %}
-                    {% endwith %}
-                </span>
-            </small>
+            <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a> 
         </li>
         {% endwith %}
     {% endfor %}

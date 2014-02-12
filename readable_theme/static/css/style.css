@@ -175,8 +175,8 @@ ul.sidebar.navbar-nav {
 
 
 .sitemap span {
-    display: block;
     padding: 5px;
+    font-size: 12px;
 }
 
 .sitemap span a {
