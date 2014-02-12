@@ -95,6 +95,11 @@ header .time {
     }
 }
 
+a.debout, a.debout:hover {
+    color: #333333;
+    text-decoration: none;
+}
+
 ul.entries li {
     padding-bottom: 20px;
 }
@@ -167,6 +172,7 @@ ul.sidebar.navbar-nav {
 .nav > li.subscribe > a {
     display: inline;
 }
+
 
 .sitemap span {
     display: block;
