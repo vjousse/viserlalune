@@ -285,13 +285,13 @@ ul.children {
 }
 
 .container .side-left {
-    font-size: 12px;
     margin-top: 45px;
+    border-left: 1px solid #BBBBBB;
 }
 
 .container .side-right {
-    text-align: right;
+    font-size: 12px;
+    text-align: left;
     margin-top: 45px;
-    border-right: 1px solid gray;
 }
 

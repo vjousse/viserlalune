@@ -96,7 +96,7 @@
             <small>
                 <span class="text-muted">
                     <i class="icon-calendar"></i> {{ blog_post.publish_date|date:"j F Y" }} 
-                    
+                    <!--
                     {% if blog_post.allow_comments %}
                     ·
                     <a href="{{ blog_post.get_absolute_url }}#displaycomments">
@@ -109,6 +109,7 @@
                         {% endif %}
                     </a>
                     {% endif %}
+                    -->
 
                     {% with blog_post.categories.all as categories %}
                     {% if categories %}

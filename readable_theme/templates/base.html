@@ -54,9 +54,15 @@
         <div class="row">
 
             <div class="col-lg-2 col-md-2 col-sm-2 side-left">
-                {% block side %}
 
-                {% endblock %}
+                <ul class="list-unstyled">
+                    <li><i class="fa fa-male"></i> Debout les gens !</li>
+                    <li><a href="{% url "home" %}">Articles</a></li>
+                    <li><a href="/bestof/">Favoris</a></li>
+                    <!--<li><a href="/subscribe/">S'abonner</a></li>-->
+                    <li><a href="/donate/">Site payant</a></li>
+                    <li><a href="/à-propos/">À propos</a></li>
+                </ul>
             </div>
             <div class="col-lg-8 col-md-10 col-sm-10">
                 <!--
@@ -74,13 +80,9 @@
                 {% endblock %}
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 side-right">
-                <ul class="list-unstyled">
-                    <li><i class="fa fa-male"></i> Debout les gens !</li>
-                    <li><a href="{% url "home" %}">Articles</a></li>
-                    <li><a href="/bestof/">Favoris</a></li>
-                    <li><a href="/à-propos/">S'abonner</a></li>
-                    <li><a href="/à-propos/">À propos</a></li>
-                </ul>
+                {% block side %}
+
+                {% endblock %}
             </div>
 
 

@@ -15,6 +15,8 @@ urlpatterns = patterns("",
 
     url(r'^ebook/', include('blogebook.urls')),
     url(r'^bestof/', include('bestof.urls')),
+    url("^donate/", direct_to_template, {"template": "donate.html"}, name="donate"),
+    url("^subscribe/", direct_to_template, {"template": "subscribe.html"}, name="subscribe"),
 
     # Change the admin prefix here to use an alternate URL for the
     # admin interface, which would be marginally more secure.

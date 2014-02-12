@@ -29,10 +29,10 @@
 {% block side %}
 
 
-    <div class="time text-left">
+    <div class="time">
         Temps de lecture : <strong>{% widthratio blog_post.content|wordcount 300 1 %} min</strong>
     </div>
-    <div class="ebook text-left">
+    <div class="ebook">
         <i class="fa fa-book" style="color:#D9534F"></i> 
             <a href="{% url 'blogebook.views.post_epub_download' blog_post.slug %}">Ebook (.epub)</a>
     </div>
@@ -50,6 +50,13 @@
             {% endfor %}
             {% endif %}
             {% endwith %}
+            </li>
+            <li>
+            <i class="fa fa-check-square-o"></i> Licence : <a href="http://creativecommons.org/licenses/by/4.0/deed.en_US">CC-BY</a>
+            </li>
+            <li>
+<script id='fb17wor'>(function(i){var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='//api.flattr.com/button/view/?uid=vjousse&button=compact&url='+encodeURIComponent(document.URL);f.title='Flattr';f.height=20;f.width=110;f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('fb17wor');</script>
+            </li>
 
         </ul>
 
@@ -73,13 +80,28 @@
         {{ blog_post.content|richtext_filters|safe }}
         <hr />
 
-        <footer class="well well-meta post-footer">
-            <hr />
-            <div class="text-center show-articles">
-                <a href="/blog/">Voir tous les articles</a>
-            </div>
+        {% if blog_post.related_posts.all %}
 
-        </footer>
+        <div style="position: relative;">
+
+            <h4><span>Articles</span> en rapport</h4>
+            <ul class="unstyled">
+            {% for post in blog_post.related_posts.all %}
+                <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+            {% endfor %}
+            </ul>
+        </div>
+        <hr />
+
+        {% endif %}
+        <div class="row">
+            <div class="col-lg-6">
+                <a href="{% url "donate" %}"><button class="btn btn-success" type="button"><i class="fa fa-btc"></i> Blog payant à prix libre</button></a>
+            </div>
+            <div class="col-lg-6 text-right">
+                <a href="{% url "home" %}"><button class="btn btn-primary" type="button"><i class="fa fa-list-alt"></i> Consulter les autres articles</button></a>
+            </div>
+        </div>
 
     </div>
     
@@ -104,20 +126,6 @@
     {% endblock %}
     -->
 
-
-    {% if blog_post.related_posts.all %}
-
-    <div style="position: relative;">
-
-        <h4><span>Articles</span> en rapport</h4>
-        <ul class="unstyled">
-        {% for post in blog_post.related_posts.all %}
-            <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
-        {% endfor %}
-        </ul>
-    </div>
-
-    {% endif %}
 
 
 <!-- END entry-content -->

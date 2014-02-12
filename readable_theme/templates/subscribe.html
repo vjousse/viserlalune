@@ -1,4 +1,15 @@
+{% extends "base.html" %}
+{% load i18n %}
 
+{% block meta_title %}{% trans "S'abonner" %}{% endblock %}
+{% block og_title %}S'abonner{% endblock %}
+{% block title %}{% trans "S'abonner" %}{% endblock %}
+
+{% block breadcrumb_menu %}
+<li class="active">{% trans "S'abonner" %}</li>
+{% endblock %}
+
+{% block main %}
             <div class="clearfix visible-xs"></div>
 
             <div class="col-lg-4 col-sm-6 newsletter-form">
@@ -17,3 +28,5 @@
             </div>
 
         </div>
+
+{% endblock %}
