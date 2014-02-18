@@ -6,4 +6,12 @@ I'm using the installation described here: http://michal.karzynski.pl/blog/2013/
 
 # Deploy
 
-  fab -A deploy
+    fab -A deploy
+
+# South migrations
+
+    ./manage.py schemamigration bestof --auto 
+    ./manage.py migrate bestof
+
+    ./manage.py schemamigration bestof --auto --update
+
