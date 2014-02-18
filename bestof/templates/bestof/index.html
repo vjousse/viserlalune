@@ -12,6 +12,8 @@ Best-of
 <h1>Mes favoris</h1>
 <p>Je vous propose ici les articles, livres et vidéos qui ont fait une <strong>différence pour moi</strong>. Je me dis que s'ils m'ont servis, ils pourront surement vous servir aussi. N'hésitez d'ailleurs pas à m'en proposer d'autres via la <a href="/à-propos">page contact</a>, je serais ravi de découvrir de nouvelles perles !</p>
 
+<p><em><strong>Note de transparence</strong> :</em> si vous achetez un de ces livres sur Amazon via les liens ci-dessous, je toucherai une commission de 5%. L'intégralité des montants gagnés est utilisée pour acheter d'autres livres. Je vous donne aussi les liens « non affiliés », à vous de choisir lequel vous souhaitez utiliser.</p>
+
 
 {% for category in categories %}
     {% if category.entry_set.all.count != 0 %}
@@ -23,7 +25,7 @@ Best-of
                 <div class="panel-body">
                     <ul class="entries">
                     {% for entry in category.entry_set.all %}
-                    <li><a href="{{entry.url}}"><strong>{{ entry.title }}</strong></a> - <span>{{entry.description|safe}}</span></li>
+                    <li><a href="{{entry.url}}"><strong>{{ entry.title }}</strong></a>{% if entry.non_affiliate_url %}, <a href="{{entry.non_affiliate_url}}"><em>lien non affilié</em></a>{% endif %} - <span>{{entry.description|safe}}</span></li>
                     {% endfor %}
                     </ul>
                 </div>

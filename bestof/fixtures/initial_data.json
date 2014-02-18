@@ -80,6 +80,7 @@
     "fields": {
       "title": "La semaine de 4 heures",
       "url": "http://www.amazon.fr/gp/product/2744064173/ref=as_li_ss_tl?ie=UTF8&tag=vincjous-21&linkCode=as2&camp=1642&creative=19458&creativeASIN=2744064173",
+      "non_affiliate_url": "http://www.amazon.fr/La-Semaine-heures-Travaillez-gagnez/dp/2744064173",
       "description": "Bon, il faut l'avouer, le titre est un exemple de marketing douteux. En revanche, le livre amène une <strong>ouverture d'esprit</strong> intéressante. Effet « ah mais <strong>une autre vie</strong> est possible en fait » garanti.",
       "pub_date":"2013-10-17T08:16:59.844Z",
       "slug":"la-semaine-de-4-heures",
@@ -95,6 +96,7 @@
     "fields": {
       "title": "Tremblez mais osez",
       "url": "http://www.amazon.fr/gp/product/2501052579/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1642&creative=6746&creativeASIN=2501052579&linkCode=as2&tag=vincjous-21",
+      "non_affiliate_url": "www.amazon.fr/Tremblez-mais-osez-Susan-Jeffers/dp/2501087739/",
       "description": "En rapport avec l'article <a href='/blog/le-courage-de-vivre-consciemment/'>Le courage de vivre consciemment</a> ce livre est une mine d’informations pour <strong>affronter vos peurs</strong> et vous épanouir personnellement. <strong>À recommander aux timides</strong> !",
       "pub_date":"2013-10-17T08:16:59.844Z",
       "slug":"tremblez-mais-osez",
@@ -109,6 +111,7 @@
     "fields": {
       "title": "La magie de voir grand",
       "url": "http://www.amazon.fr/gp/product/2892250498/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1642&creative=6746&creativeASIN=2892250498&linkCode=as2&tag=vincjous-21",
+      "non_affiliate_url": "http://www.amazon.fr/magie-voir-grand-Fixez-vous-d%C3%A9passez-/dp/2892250498/",
       "description": "Ce livre est une bouffée d'oxygène à chaque fois que je le lis. Si <strong>vous manquez de confiance</strong>, je vous le recommande chaudement. Un de mes articles sur le sujet : « <a href='/blog/positivez-autorisez-vous-à-réussir/'>Positivez, autorisez-vous à réussir</a> »",
       "pub_date":"2013-10-17T08:16:59.844Z",
       "slug":"la-magie-de-voir-grand",
@@ -122,6 +125,7 @@
     "fields": {
       "title": "Le pouvoir du moment présent",
       "url": "http://www.amazon.fr/gp/product/2290020206/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1642&creative=6746&creativeASIN=2290020206&linkCode=as2&tag=vincjous-21",
+      "non_affiliate_url": "www.amazon.fr/pouvoir-moment-présent-déveil-spirituel/dp/2290020206/",
       "description": "Bien qu'un peu compliqué à lire des fois, ce livre vous aide à comprendre comment profiter de la vie ici et maintenant. Voir l'article « <a href='/blog/le-pouvoir-du-moment-présent/'>Le pouvoir du moment présent</a> » pour plus d'informations.",
       "pub_date":"2013-10-17T08:16:59.844Z",
       "slug":"le-pouvoir-du-moment-présent",
