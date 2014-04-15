@@ -30,10 +30,10 @@
 
 
     <div class="time">
-        Temps de lecture : <strong>{% widthratio blog_post.content|wordcount 300 1 %} min</strong>
+        Temps de lecture&nbsp;: <strong>{% widthratio blog_post.content|wordcount 300 1 %}&nbsp;min</strong>
     </div>
     <div class="ebook">
-        <i class="fa fa-book" style="color:#D9534F"></i> 
+        <i class="fa fa-book text-danger"></i> 
             <a href="{% url 'blogebook.views.post_epub_download' blog_post.slug %}">Ebook (.epub)</a>
     </div>
 
@@ -96,10 +96,10 @@
         {% endif %}
         <div class="row">
             <div class="col-lg-6">
-                <a href="{% url "donate" %}"><button class="btn btn-success" type="button"><i class="fa fa-btc"></i> Blog payant à prix libre</button></a>
             </div>
             <div class="col-lg-6 text-right">
-                <a href="{% url "home" %}"><button class="btn btn-primary" type="button"><i class="fa fa-list-alt"></i> Consulter les autres articles</button></a>
+                <div><a href="{% url "donate" %}"><button class="btn btn-danger" type="button"><i class="fa fa-heart"></i> Dire merci</button></a></div><div>et/ou</div>
+                <div><a href="{% url "home" %}"><button class="btn btn-primary" type="button"><i class="fa fa-list-alt"></i> Consulter les autres articles</button></a></div>
             </div>
         </div>
 

@@ -98,6 +98,12 @@ header .time {
 a.debout, a.debout:hover {
     color: #333333;
     text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+li.debout {
+    padding-bottom: 10px;
 }
 
 ul.entries li {
@@ -290,11 +296,11 @@ ul.children {
 
 .container .side-left {
     margin-top: 45px;
-    border-left: 1px solid #BBBBBB;
+    border-right: 2px solid #BBBBBB;
 }
 
-.container .side-right {
-    font-size: 12px;
+.container .side-right, .container .side-left-bottom {
+    font-size: 14px;
     text-align: left;
     margin-top: 45px;
 }
