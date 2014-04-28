@@ -1,6 +1,7 @@
 #body{
     font-size: 18px;
-    line-height: 27px;
+    line-height: 30px;
+    font-family: "Georgia", serif;
 }
 
 header .ebook {
@@ -18,6 +19,11 @@ header .time {
     padding-top: 25px;
     padding-bottom: 40px;
     margin-top: 0px;
+    font-family: "Helvetica", sans-serif;
+}
+
+.container h2, .container h3 {
+    font-family: "Helvetica", sans-serif;
 }
 
 .container .header a {
