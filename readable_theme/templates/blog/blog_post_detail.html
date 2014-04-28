@@ -29,37 +29,6 @@
 {% block side %}
 
 
-    <div class="time">
-        Temps de lecture&nbsp;: <strong>{% widthratio blog_post.content|wordcount 300 1 %}&nbsp;min</strong>
-    </div>
-    <div class="ebook">
-        <i class="fa fa-book text-danger"></i> 
-            <a href="{% url 'blogebook.views.post_epub_download' blog_post.slug %}">Ebook (.epub)</a>
-    </div>
-
-        <ul class="entry_meta clearfix list-unstyled text-muted">
-
-            <li><i class="fa fa-calendar"></i> <time datetime="{{ blog_post.publish_date|date:"Y-m-d" }}">{{ blog_post.publish_date|date:"j F Y" }}</time></li>
-            <li><i class="fa fa-user"></i> {{ blog_post.user.get_full_name|default:blog_post.user.username }}</li>
-            <li><i class="fa fa-copy"></i>
-            
-            {% with blog_post.categories.all as categories %}
-            {% if categories %}
-            {% for category in categories %}
-            <a href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
-            {% endfor %}
-            {% endif %}
-            {% endwith %}
-            </li>
-            <li>
-            <i class="fa fa-check-square-o"></i> Licence : <a href="http://creativecommons.org/licenses/by/4.0/deed.en_US">CC-BY</a>
-            </li>
-            <li>
-<script id='fb17wor'>(function(i){var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='//api.flattr.com/button/view/?uid=vjousse&button=compact&url='+encodeURIComponent(document.URL);f.title='Flattr';f.height=20;f.width=110;f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('fb17wor');</script>
-            </li>
-
-        </ul>
-
 {% endblock %}
 
 {% block main %}
@@ -96,6 +65,35 @@
         {% endif %}
         <div class="row">
             <div class="col-lg-6">
+
+    <div class="ebook">
+        <i class="fa fa-book text-danger"></i> 
+            <a href="{% url 'blogebook.views.post_epub_download' blog_post.slug %}">Ebook (.epub)</a>
+    </div>
+
+        <ul class="entry_meta clearfix list-unstyled text-muted">
+
+            <li><i class="fa fa-calendar"></i> <time datetime="{{ blog_post.publish_date|date:"Y-m-d" }}">{{ blog_post.publish_date|date:"j F Y" }}</time></li>
+            <li><i class="fa fa-user"></i> {{ blog_post.user.get_full_name|default:blog_post.user.username }}</li>
+            <li><i class="fa fa-copy"></i>
+            
+            {% with blog_post.categories.all as categories %}
+            {% if categories %}
+            {% for category in categories %}
+            <a href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            </li>
+            <li>
+            <i class="fa fa-check-square-o"></i> Licence : <a href="http://creativecommons.org/licenses/by/4.0/deed.en_US">CC-BY</a>
+            </li>
+            <li>
+<script id='fb17wor'>(function(i){var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='//api.flattr.com/button/view/?uid=vjousse&button=compact&url='+encodeURIComponent(document.URL);f.title='Flattr';f.height=20;f.width=110;f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('fb17wor');</script>
+            </li>
+
+        </ul>
+
             </div>
             <div class="col-lg-6 text-right">
                 <div><a href="{% url "donate" %}"><button class="btn btn-danger" type="button"><i class="fa fa-heart"></i> Dire merci</button></a></div><div>et/ou</div>
