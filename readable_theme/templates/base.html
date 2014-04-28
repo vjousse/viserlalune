@@ -42,6 +42,36 @@
 </head>
 <body id="{% block body_id %}body{% endblock %}">
 
+
+
+<nav class="navbar navbar-default" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+        <ul class="nav navbar-nav">
+            <li class="debout">
+                <a class="debout" href="/">Debout les gens !</a>
+            </li>
+            <li><a href="{% url "home" %}">Lire les articles</a></li>
+            <li><a href="/bestof/">Trouver des idées de lecture</a></li>
+            <li><a href="/subscribe/">S'abonner</a></li>
+            <li><a href="/donate/" class="text-danger">Dire merci <i class="fa fa-heart"></i></a></li>
+            <li><a href="/à-propos/">À propos</a></li>
+        </ul>
+
+    </div><!-- /.navbar-collapse -->
+</nav>
     <div class="container">
         {% nevercache %}
         {% for message in messages %}
@@ -55,14 +85,6 @@
 
             <div class="col-lg-2 col-md-2 col-sm-2 side-left">
 
-                <ul class="list-unstyled">
-                    <li class="debout"><a href="{% url "home" %}" class="debout">Debout les gens&nbsp;!</a></li>
-                    <li><a href="{% url "home" %}">Lire les articles</a></li>
-                    <li><a href="/bestof/">Trouver des idées de lecture</a></li>
-                    <li><a href="/subscribe/">S'abonner</a></li>
-                    <li><a href="/donate/" class="text-danger">Dire merci <i class="fa fa-heart"></i></a></li>
-                    <li><a href="/à-propos/">En savoir plus</a></li>
-                </ul>
             </div>
             <div class="col-lg-8 col-md-10 col-sm-10">
                 <!--

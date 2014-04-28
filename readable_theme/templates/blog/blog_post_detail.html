@@ -47,7 +47,7 @@
     <div class="entry_content">
 
         {{ blog_post.content|richtext_filters|safe }}
-        <hr />
+        <hr class="article-bottom"/>
 
         {% if blog_post.related_posts.all %}
 
@@ -96,7 +96,7 @@
 
             </div>
             <div class="col-lg-6 text-right">
-                <div><a href="{% url "donate" %}"><button class="btn btn-danger" type="button"><i class="fa fa-heart"></i> Dire merci</button></a></div><div>et/ou</div>
+                <div><a href="{% url "donate" %}"><button class="btn btn-danger" type="button"><i class="fa fa-heart"></i> Dire merci</button></a></div><div>&nbsp;</div>
                 <div><a href="{% url "home" %}"><button class="btn btn-primary" type="button"><i class="fa fa-list-alt"></i> Consulter les autres articles</button></a></div>
             </div>
         </div>
