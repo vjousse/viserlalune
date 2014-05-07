@@ -4,6 +4,10 @@
     font-family: "Georgia", serif;
 }
 
+#body h1, #body h2, #body h3, #body h4, #body h5, #body h6 {
+    font-weight: normal;
+}
+
 header .ebook {
     padding-bottom: 10px;
     font-style: italic;
@@ -325,3 +329,9 @@ ul.children {
     margin-top: 45px;
 }
 
+@media (min-width: 767px) {
+    #body .main-content {
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+}
