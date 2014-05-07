@@ -8,6 +8,10 @@
     font-weight: normal;
 }
 
+#body h1 {
+    text-align: center;
+}
+
 header .ebook {
     padding-bottom: 10px;
     font-style: italic;
