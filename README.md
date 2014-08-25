@@ -10,6 +10,10 @@ I'm using the installation described here: http://michal.karzynski.pl/blog/2013/
 
     fab -A deploy
 
+# Backup
+
+    fab -A backup:'~/last.db'
+
 # South migrations
 
     ./manage.py schemamigration bestof --auto 
