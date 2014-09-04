@@ -1,4 +1,4 @@
-[Mezzanine](http://mezzanine.jupo.org/) based website.
+[Mezzanine](http://mezzanine.jupo.org/) based website. `Python2` virtualenv.
 
 # Installation
 
