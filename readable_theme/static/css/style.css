@@ -109,14 +109,6 @@ header .time {
     }
 }
 
-.navbar .navbar-nav {
-  display: inline-block;
-  float: none;
-}
-
-.navbar .navbar-collapse {
-  text-align: center;
-}
 
 .navbar-default .navbar-nav > li > a.text-danger {
     color: #B94A48;
@@ -164,6 +156,14 @@ ul.sidebar>li>a {
     padding-top:10px;
 
     padding-left: 5px;
+}
+
+nav.navbar {
+    box-shadow: none;
+}
+
+nav.navbar {
+    border-bottom: 0;
 }
 
 ul.sidebar.navbar-nav {

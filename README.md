@@ -14,6 +14,8 @@ I'm using the installation described here: http://michal.karzynski.pl/blog/2013/
 
     fab -A backup:'~/last.db'
 
+Restore dump locally: pg_restore -c -d viserlalune last.db
+
 # South migrations
 
     ./manage.py schemamigration bestof --auto 

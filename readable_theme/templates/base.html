@@ -44,33 +44,37 @@
 
 
 
+<!-- https://medium.com/@mariusc23/hide-header-on-scroll-down-show-on-scroll-up-67bbaae9a78c -->
+<!-- http://graphicdesign.stackexchange.com/questions/26169/best-fonts-for-improving-reading-experience -->
 <nav class="navbar navbar-default" role="navigation">
-    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
 
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
+        <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-        <ul class="nav navbar-nav">
-            <li class="debout">
-                <a class="debout" href="/"><i class="fa fa-male"></i> Debout les gens !</a>
-            </li>
-            <li><a href="{% url "home" %}">Lire les articles</a></li>
-            <li><a href="/bestof/">Trouver des idées de lecture</a></li>
-            <li><a href="/subscribe/">S'abonner</a></li>
-            <li><a href="/donate/" class="text-danger">Dire merci <i class="fa fa-heart"></i></a></li>
-            <li><a href="/à-propos/">À propos</a></li>
-        </ul>
+            <ul class="nav navbar-nav">
+                <li class="debout">
+                    <a class="debout" href="/"><i class="fa fa-moon-o"></i> Debout les gens !</a>
+                </li>
+                <li><a href="{% url "home" %}">Lire les articles</a></li>
+                <li><a href="/bestof/">Trouver des idées de lecture</a></li>
+                <li><a href="/subscribe/">S'abonner</a></li>
+                <li><a href="/donate/" class="text-danger">Dire merci <i class="fa fa-heart"></i></a></li>
+                <li><a href="/à-propos/">À propos</a></li>
+            </ul>
 
-    </div><!-- /.navbar-collapse -->
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid-->
 </nav>
     <div class="container">
         {% nevercache %}
