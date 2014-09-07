@@ -62,15 +62,20 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-            <ul class="nav navbar-nav">
-                <li class="debout">
-                    <a class="debout" href="/"><i class="fa fa-moon-o"></i> Debout les gens !</a>
+            <ul class="nav navbar-nav menu-icons">
+                <li class="moon">
+                    <a href="/"><i class="fa fa-moon-o"></i></a>
                 </li>
-                <li><a href="{% url "home" %}">Lire les articles</a></li>
-                <li><a href="/bestof/">Trouver des idées de lecture</a></li>
-                <li><a href="/subscribe/">S'abonner</a></li>
-                <li><a href="/donate/" class="text-danger">Dire merci <i class="fa fa-heart"></i></a></li>
-                <li><a href="/à-propos/">À propos</a></li>
+                <li><a href="{% url "home" %}"><i class="fa fa-file-text-o"></i></a></li>
+                <li><a href="/bestof/"><i class="fa fa-book"></i></a></li>
+                <li><a href="/subscribe/"><i class="fa fa-envelope-o"></i></a></li>
+                <li><a href="/donate/" class="text-danger"><i class="fa fa-heart"></i></a></li>
+                <li><a href="/à-propos/"><i class="fa fa-question"></i></a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <li><a>« Il faut toujours <strong>viser la lune</strong>, car même en cas d’échec<br /> on atterrit dans les étoiles » — <em>Oscar Wilde</em></a></li>
             </ul>
 
         </div><!-- /.navbar-collapse -->
@@ -87,10 +92,10 @@
 
         <div class="row">
 
-            <div class="col-lg-2 col-md-2 col-sm-2 side-left">
+            <div class="col-lg-1 col-md-2 col-sm-2 side-left">
 
             </div>
-            <div class="col-lg-8 col-md-10 col-sm-10 main-content">
+            <div class="col-lg-10 col-md-10 col-sm-10 main-content">
                 <!--
                 <nav>
                     <ul class="breadcrumb">
@@ -105,7 +110,7 @@
 
                 {% endblock %}
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 side-right">
+            <div class="col-lg-1 col-md-2 col-sm-2 side-right">
                 {% block side %}
 
                 {% endblock %}

@@ -1,5 +1,5 @@
 #body{
-    font-size: 18px;
+    font-size: 20px;
     line-height: 30px;
     font-family: "Georgia", serif;
 }
@@ -11,6 +11,7 @@
 #body h1 {
     text-align: center;
 }
+
 
 header .ebook {
     padding-bottom: 10px;
@@ -24,10 +25,11 @@ header .time {
 }
 
 .container h1 {
-    padding-top: 25px;
-    padding-bottom: 40px;
+    padding-top: 65px;
+    padding-bottom: 65px;
     margin-top: 0px;
     font-family: "Helvetica", sans-serif;
+    font-size: 60px;
 }
 
 .container h2, .container h3 {
@@ -109,6 +111,15 @@ header .time {
     }
 }
 
+.menu-icons {
+    padding-top: 10px;
+    font-size: 25px;
+}
+
+
+.moon {
+    border-right: 1px solid #eeeeee;
+}
 
 .navbar-default .navbar-nav > li > a.text-danger {
     color: #B94A48;
@@ -163,7 +174,7 @@ nav.navbar {
 }
 
 nav.navbar {
-    border-bottom: 0;
+    border-bottom: 1px solid #eeeeee;
 }
 
 ul.sidebar.navbar-nav {
