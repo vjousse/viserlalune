@@ -256,6 +256,11 @@ article {
     margin-top: 50px;
 }
 
+.article-footer {
+    font-size: 16px;
+    text-align: right;
+}
+
 .input_id_honeypot {display:none !important;}
 
 /* Comments */
