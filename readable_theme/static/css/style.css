@@ -349,6 +349,10 @@ ul.children {
     margin-top: 45px;
 }
 
+#body .main-content {
+    padding-bottom: 60px;
+}
+
 @media (min-width: 767px) {
     #body .main-content {
         padding-left: 60px;
