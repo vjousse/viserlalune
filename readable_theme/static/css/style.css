@@ -24,12 +24,13 @@ header .time {
     font-style: italic;
 }
 
-.container h1 {
-    padding-top: 65px;
+#body .container h1 {
+    padding-top: 100px;
     padding-bottom: 85px;
     margin-top: 0px;
     font-family: "Helvetica", sans-serif;
     font-size: 60px;
+    font-weight: bold;
 }
 
 .container h2, .container h3 {
@@ -252,7 +253,7 @@ article {
 }
 
 .article-bottom {
-    padding-bottom: 30px;
+    padding-bottom: 50px;
     margin-top: 50px;
 }
 
