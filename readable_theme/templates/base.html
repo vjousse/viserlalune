@@ -83,13 +83,13 @@
 
             <ul class="nav navbar-nav menu-icons">
                 <li class="moon">
-                    <a href="/"><i class="fa fa-moon-o"></i> Viser la lune</a>
+                    <a href="/" title="Accueil"><i class="fa fa-moon-o"></i> Viser la lune</a>
                 </li>
-                <li><a href="{% url "home" %}"><i class="fa fa-file-text-o"></i></a></li>
-                <li><a href="/bestof/"><i class="fa fa-book"></i></a></li>
-                <li><a href="/subscribe/"><i class="fa fa-envelope-o"></i></a></li>
-                <li><a href="/donate/" class="text-danger"><i class="fa fa-heart"></i></a></li>
-                <li><a href="/à-propos/"><i class="fa fa-question"></i></a></li>
+                <li><a href="{% url "home" %}" title="Liste des articles"><i class="fa fa-file-text-o"></i></a></li>
+                <li><a href="/bestof/" title="Ma sélection"><i class="fa fa-book"></i></a></li>
+                <li><a href="/subscribe/" title="S'inscrire"><i class="fa fa-envelope-o"></i></a></li>
+                <li><a href="/donate/" title="Soutenir mes écrits" class="text-danger"><i class="fa fa-heart"></i></a></li>
+                <li><a href="/à-propos/" title="À propos"><i class="fa fa-question"></i></a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
