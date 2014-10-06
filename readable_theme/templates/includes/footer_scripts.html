@@ -1,7 +1,6 @@
 {% load mezzanine_tags %}
 
 {% editable_loader %}
-
 <script>
 {% if settings.GOOGLE_ANALYTICS_ID and not request.user.is_staff %}
 var _gaq = _gaq || [['_trackPageview']];
@@ -14,4 +13,17 @@ _gaq.unshift(['_setAccount', '{{ settings.GOOGLE_ANALYTICS_ID }}']);
     s.parentNode.insertBefore(g, s);
 })(document, 'script');
 {% endif %}
+
+var _paq = _paq || [];
+_paq.push(['trackPageView']);
+_paq.push(['enableLinkTracking']);
+(function() {
+var u="//stats.viserlalune.com/";
+_paq.push(['setTrackerUrl', u+'piwik.php']);
+_paq.push(['setSiteId', 1]);
+var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+})();
 </script>
+
+
