@@ -1,3 +1,4 @@
+BeautifulSoup==3.2.1
 Django==1.6.5
 -e git://github.com/aerkalov/ebooklib.git@410c1b100f4fe4cf54bcb6d1619398e1cde04c97#egg=EbookLib-dev
 Fabric==1.7.0
@@ -5,7 +6,6 @@ Markdown==2.3.1
 Mezzanine==3.1.7
 Pillow==2.5.0
 South==0.8.2
-beautifulsoup4==4.3.2
 bleach==1.4
 django-appconf==0.6
 django-compressor==1.3
